@@ -22,6 +22,20 @@ class User < ActiveRecord::Base
     end
   end
 
+  def user_type
+    if self.applicant?
+      'Applicante'
+    else
+      if self.interpreter?
+        'Interpreter'
+      else
+        if self.administrator?
+        'Administrator'
+        end
+      end
+    end
+  end
+
   # --- Change user_type --- #
 
   def become_interpreter

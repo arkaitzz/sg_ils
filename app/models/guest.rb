@@ -4,4 +4,12 @@ class Guest < Hobo::Model::Guest
     false
   end
 
+  def interpreter?
+    false
+  end
+
+  def applicant?
+    false
+  end
+
 end
