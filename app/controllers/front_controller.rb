@@ -2,7 +2,11 @@ class FrontController < ApplicationController
 
   hobo_controller
 
-  def index; end
+  def index
+    if current_user.class == User
+      redirect_to "/menu"
+    end
+  end
 
   def summary
     if !current_user.administrator?

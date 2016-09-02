@@ -17,4 +17,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def main_menu
+    if current_user.class != User
+      redirect_to "/login"
+    end
+    @user = current_user
+  end
 end
