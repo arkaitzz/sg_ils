@@ -13,6 +13,8 @@ class User < ActiveRecord::Base
   attr_accessible :name, :email_address, :password, :password_confirmation, :current_password, :addresses
 
   has_many :addresses, :class_name => "Address"
+  has_many :requests
+  has_many :interpretation_request, :class_name => "Request"
 
   # This gives admin rights and an :active state to the first sign-up.
   # Just remove it if you don't want that

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160830082158) do
+ActiveRecord::Schema.define(version: 20160905100103) do
 
   create_table "addresses", force: true do |t|
     t.string   "line1"
@@ -26,6 +26,20 @@ ActiveRecord::Schema.define(version: 20160830082158) do
   end
 
   add_index "addresses", ["user_id"], name: "index_addresses_on_user_id"
+
+  create_table "requests", force: true do |t|
+    t.datetime "start_time"
+    t.string   "place"
+    t.integer  "duration"
+    t.text     "observations"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+    t.integer  "interpreter_id"
+  end
+
+  add_index "requests", ["interpreter_id"], name: "index_requests_on_interpreter_id"
+  add_index "requests", ["user_id"], name: "index_requests_on_user_id"
 
   create_table "users", force: true do |t|
     t.string   "crypted_password",          limit: 40
