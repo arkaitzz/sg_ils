@@ -28,7 +28,7 @@ class User < ActiveRecord::Base
 
   def user_type
     if self.applicant?
-      'Applicante'
+      'Applicant'
     else
       if self.interpreter?
         'Interpreter'
@@ -73,6 +73,14 @@ class User < ActiveRecord::Base
       UserMailer.forgot_password(self, lifecycle.key).deliver
     end
 
+    transition :be_interpreter, { :active => :active }, :available_to => :all do
+      self.become_interpreter
+    end
+
+    transition :be_applicant, { :active => :active }, :available_to => :all do
+      self.become_applicant
+    end
+
     transition :reset_password, { :active => :active }, :available_to => :key_holder,
                :params => [ :password, :password_confirmation ]
 
@@ -102,6 +110,6 @@ class User < ActiveRecord::Base
   end
 
   def view_permitted?(field)
-    acting_user.administrator? || acting_user.interpreter? || (acting_user == self)
+    acting_user.administrator? || acting_user.interpreter? || (acting_user == self) #No funciona el signup por este permiso
   end
 end

@@ -17,7 +17,7 @@ class Request < ActiveRecord::Base
   # --- Permissions --- #
 
   def create_permitted?
-    acting_user.administrator?
+    acting_user.administrator? || acting_user.applicant?
   end
 
   def update_permitted?
@@ -28,8 +28,8 @@ class Request < ActiveRecord::Base
     acting_user.administrator?
   end
 
-  def view_permitted?(field)
-    true
+  def view_permitted?(field) #Only an admin or interpreters can view every request. Applicants only thier requests.
+    acting_user.administrator? || acting_user.interpreter? || acting_user == self.user
   end
 
 end

@@ -1,0 +1,65 @@
+<page title="Role Setter">
+
+  <body: class="front-page"/>
+
+  <content:>
+    <header class="content-header hero-unit">
+      <h1>Control de usuarios,  <%= @user.name%></h1>
+      <section class="welcome-message">
+
+      </section>
+    </header>
+    <section class="content-body">
+
+    <div class="tabbable"> <!-- Only required for left/right tabs -->
+      <ul class="nav nav-tabs">
+        <li class="active"><a href="#tab1" data-toggle="tab">Applicants</a></li>
+        <li><a href="#tab2" data-toggle="tab">Interpreters</a></li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane active" id="tab1">
+                  <h3>Applicants</h3>
+        <table-plus with="&@user.applicant" fields="created_at,applicant, interpreter, this, name, id" class="table table-striped" without-header>
+          <tr: replace>
+            <tr part="ark">
+              <td><view:created_at/></td>
+              <td><view:applicant/></td>
+              <td><view:interpreter/></td>
+              <td><view:id/></td>
+              <td><view:name/></td>
+              <td class="span2"><transition-buttons ajax updates="#ark"/></td>
+            </tr>
+          </tr:>
+
+        </table-plus>
+        </div>
+        <div class="tab-pane" id="tab2">
+              <div >
+
+    <h3>Interpretes</h3>
+        <table-plus with="&@user.interpreter" fields="created_at,applicant, interpreter, this, name, id" class="table table-striped" without-header>
+          <tr: replace>
+            <tr part="arka">
+              <td><view:created_at/></td>
+              <td><view:applicant/></td>
+              <td><view:interpreter/></td>
+              <td><view:id/></td>
+              <td><view:name/></td>
+              <td class="span2"><transition-buttons ajax updates="#arka"/></td>
+            </tr>
+          </tr:>
+
+        </table-plus>
+    </div>
+        </div>
+      </div>
+    </div>
+
+
+    </section>
+
+
+  </content:>
+
+</page>
+

@@ -125,7 +125,7 @@
 
 <def tag="index-for-user-page" polymorphic/>
 <def tag="index-for-user-page" for="Address">
-  <page merge title="#{ht 'address.index_for_owner.title', :count=>100, :default=>['Address for']} #{name :with => @user, :no_wrapper => true}">
+  <page merge title="#{ht 'address.index_for_owner.title', :count=>100, :default=>['Addresses for']} #{name :with => @user, :no_wrapper => true}">
     <body: class="index-for-owner-page user address" param/>
     <content-header: param>
       <div param="back-to">
@@ -301,7 +301,7 @@
 
 <def tag="index-for-user-page" polymorphic/>
 <def tag="index-for-user-page" for="Request">
-  <page merge title="#{ht 'request.index_for_owner.title', :count=>100, :default=>['Request for']} #{name :with => @user, :no_wrapper => true}">
+  <page merge title="#{ht 'request.index_for_owner.title', :count=>100, :default=>['Requests for']} #{name :with => @user, :no_wrapper => true}">
     <body: class="index-for-owner-page user request" param/>
     <content-header: param>
       <div param="back-to">
@@ -518,6 +518,48 @@
 
     <content-body: param>
       <activate-form param="form"/>
+    </content-body:>
+
+  </page>
+</def>
+
+<def tag="be-interpreter-page" polymorphic/>
+<def tag="be-interpreter-page" for="User">
+  <page title="#{ht 'user.be_interpreter.title', :default=>['Be Interpreter']}" merge>
+
+    <body: class="lifecycle-transition-page be-interpreter-page" param/>
+
+    <content-header: param>
+      <h2 param="heading">
+        <ht key="user.be_interpreter.heading">
+          Be Interpreter
+        </ht>
+      </h2>
+    </content-header:>
+
+    <content-body: param>
+      <be-interpreter-form param="form"/>
+    </content-body:>
+
+  </page>
+</def>
+
+<def tag="be-applicant-page" polymorphic/>
+<def tag="be-applicant-page" for="User">
+  <page title="#{ht 'user.be_applicant.title', :default=>['Be Applicant']}" merge>
+
+    <body: class="lifecycle-transition-page be-applicant-page" param/>
+
+    <content-header: param>
+      <h2 param="heading">
+        <ht key="user.be_applicant.heading">
+          Be Applicant
+        </ht>
+      </h2>
+    </content-header:>
+
+    <content-body: param>
+      <be-applicant-form param="form"/>
     </content-body:>
 
   </page>

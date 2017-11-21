@@ -8,7 +8,8 @@
       <section class="welcome-message">
         <h3>Congratulations! Your Hobo Rails App is up and running</h3>
         <ul>
-          <li>To customise this page: edit app/views/front/index.dryml</li>
+          <li>Servicio de Intérpretes de Lengua de Signos gratuito para todas las personas sordas del País Vasco.</li>
+          <li>Seas socio/a de Euskal Gorrak o no, solicita aquí el servicio ILS para tus gestiones personales. </li>
         </ul>
 
         <% if User.count == 0 -%>

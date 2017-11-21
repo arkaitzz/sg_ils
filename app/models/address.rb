@@ -18,7 +18,7 @@ class Address < ActiveRecord::Base
   # --- Permissions --- #
 
   def create_permitted?
-    acting_user.administrator?
+    acting_user.administrator? || acting_user.applicant?
   end
 
   def update_permitted?

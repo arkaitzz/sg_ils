@@ -7,6 +7,8 @@ Sgils::Application.routes.draw do
   post 'search' => 'front#search', :as => 'site_search_post'
   get 'search' => 'front#search', :as => 'site_search'
   get 'menu' => 'users#main_menu', :as => 'main_menu'
+  get 'role' => 'users#role_set', :as => 'users_role'
+  get 'unassigned' => 'requests#unassigned', :as => 'unassigned_requests'
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
