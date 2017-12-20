@@ -11,9 +11,10 @@
         <div class="row">
           <span class="label label-success">Applicant actions</span>
             <div class="row">
-              <div class="span4"><a href="/users/#{@user.id}/requests/new"><button class="w3-btn w3-indigo">Nueva peticion</button></a></div>
+              <div class="span3"><a href="/users/#{@user.id}/requests/new"><button class="w3-btn w3-indigo">Nueva peticion</button></a></div>
               <div class="span3"><a href="/users/#{@user.id}/requests/"><button class="w3-btn w3-blue">Editar peticiones</button></a></div>
-              <div class="span4"><a href="/users/#{@user.id}/edit"><button class="w3-btn w3-light-blue">Editar perfil + direcciones</button></a></div>
+              <div class="span3"><a href="/users/#{@user.id}/addresses/"><button class="w3-btn w3-deep-purple">Mi libreta de direcciones</button></a></div>
+              <div class="span2"><a href="/users/#{@user.id}/edit"><button class="w3-btn w3-light-blue">Editar perfil</button></a></div>
             </div>
             <span class="label label-success">Interprete actions</span>
             <div class="row">
