@@ -1,0 +1,29 @@
+<page title="Step3">
+
+  <body: class="front-page"/>
+
+  <content:>
+    <header class="content-header">
+      <h1>Nueva solicitud de servicio (3/3)</h1>
+      <h3>Usuario: #{current_user.name}</h3>
+      <h3>Step 3/3</h3>
+    </header>
+    <section class="content-body">
+      Campos del form en el step3
+      <br/>
+      <div style="margin-top:20px;float: right;">
+        <form action="#{request_step3_path}" method="get">
+          <input class="btn btn-primary button submit-button" value="Finish ⟶" type="submit"/>
+        </form>
+      </div>
+      <div style="margin-top:20px;float: left;">
+        <form action="#{request_step2_path}" method="get">
+          <input class="btn btn-primary button submit-button" value="⟵ Step2" type="submit"/>
+        </form>
+      </div>
+    </section>
+  </content:>
+
+</page>
+
+
