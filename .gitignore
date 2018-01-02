@@ -6,33 +6,24 @@
 
 # Ignore bundler config.
 .bundle
+.ruby-version
+.rvmrc
+.rbenv-version
 
 # Ignore the default SQLite database.
 db/*.sqlite3
 db/*.sqlite3-journal
+db/schema.rb
 
 # Ignore all logfiles and tempfiles.
-log/*.log
-tmp/*
-log/
-test/
+log/*
+!/log/.keep
+tmp
+passenger.3000.pid.lock
+passenger.3000.pid
 
 # Ignore compiled assets
 public/assets/
-
-# Ignore all PDF files
-*.pdf
-
-# Ignore all paperclip stuff
-attachments/attachments/*
-attachments/logos/*
-attachments/odontograms/*
-attachments/photos/*
-
-# Ruby version control files.
-.rvmrc
-.rbenv-version
-.ruby-version
 
 # Per-instance custom files
 app/views/taglibs/auto/*
@@ -42,5 +33,3 @@ config/environments/*.rb
 config/hobo_routes.rb
 config/initializers/static_configuration.rb
 config/puma.rb
-public/img/logo_header_company.png
-
