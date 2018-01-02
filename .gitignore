@@ -16,11 +16,12 @@ db/*.sqlite3-journal
 db/schema.rb
 
 # Ignore all logfiles and tempfiles.
+*.orig
 log/*
 !/log/.keep
-tmp
 passenger.3000.pid.lock
 passenger.3000.pid
+tmp
 
 # Ignore compiled assets
 public/assets/
