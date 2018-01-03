@@ -1,4 +1,4 @@
-Sgils::Application.configure do
+ZHIK::Application.configure do
   # Hobo: tell ActiveReload about dryml
   config.watchable_dirs[File.join(config.root, 'app/views')] = ['dryml']
   # Settings specified here will take precedence over those in config/application.rb.

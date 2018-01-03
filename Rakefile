@@ -3,4 +3,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Sgils::Application.load_tasks
+ZHIK::Application.load_tasks

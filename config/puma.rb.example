@@ -1,0 +1,17 @@
+threads 8,32
+workers 2
+environment 'production'
+preload_app!
+daemonize true
+drain_on_shutdown true
+
+pidfile './tmp/pids/puma.pid'
+
+on_worker_boot do
+  ActiveSupport.on_load(:active_record) do
+    ActiveRecord::Base.establish_connection
+  end
+end
+
+bind "unix://./tmp/sockets/puma.sock"
+
