@@ -12,7 +12,7 @@
       Campos del form en el step1
       <br/>
       <div style="margin-top:20px;float: right;">
-        <form action="#{request_step2_path}" method="get">
+        <form action="#{request_step2_path(@request.id)}" method="get">
           <input class="btn btn-primary button submit-button" value="Step2 ⟶" type="submit"/>
         </form>
       </div>

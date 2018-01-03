@@ -5,6 +5,7 @@ class RequestsController < ApplicationController
   auto_actions :all
   auto_actions_for :user, [:index, :new, :create]
   before_filter :set_self_user, :only => [:new_for_user]
+  before_filter :set_request, :only => [:step1, :step2, :step3]
 
   def pre_steps_creation
     # TODO: Here we create a request attached to current user and proceed to edit on steps 1,2,3
@@ -14,7 +15,6 @@ class RequestsController < ApplicationController
   def step1 #TODO: Raise an exception if the user is not logged and trying to reach step1
     # This step for: DATE
     flash[:notice] = 'step1 launch for'+ current_user.name
-    @request = Request.first #Remove this line to select the proper request each time
   end
 
   def step2
@@ -47,6 +47,12 @@ class RequestsController < ApplicationController
 # ------------------------------------------------------------------------------------------------------------------------------------#
 
   protected
+
+    def set_request
+      @request = Request.find(params[:request_id])
+      #TODO: si el request no es de mi propiedad...
+      #TODO: si el id que le paso no coincide con ningún request...
+    end
 
     def set_self_user #No manually typing other's id's on the URL
       if params[:user_id].to_i != self.current_user.id

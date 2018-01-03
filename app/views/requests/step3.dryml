@@ -12,12 +12,12 @@
       Campos del form en el step3
       <br/>
       <div style="margin-top:20px;float: right;">
-        <form action="#{request_step3_path}" method="get">
+        <form action="#{request_step3_path(@request.id)}" method="get">
           <input class="btn btn-primary button submit-button" value="Finish ⟶" type="submit"/>
         </form>
       </div>
       <div style="margin-top:20px;float: left;">
-        <form action="#{request_step2_path}" method="get">
+        <form action="#{request_step2_path(@request.id)}" method="get">
           <input class="btn btn-primary button submit-button" value="⟵ Step2" type="submit"/>
         </form>
       </div>

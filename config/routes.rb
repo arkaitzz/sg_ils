@@ -12,11 +12,11 @@ Sgils::Application.routes.draw do
 
   # The ordenated way to create a request
   get 'create_request' => 'requests#pre_steps_creation', :as => 'new_request_creation'
-  get 'step1' => 'requests#step1', :as => 'request_step1'
-  get 'step2' => 'requests#step2', :as => 'request_step2'
-  get 'step3' => 'requests#step3', :as => 'request_step3'
-  get 'request_review' => 'requests#review', :as => 'request_review'
-  get 'request_confirm' => 'requests#confirm', :as => 'request_confirm'
+  get 'step1/:request_id' => 'requests#step1', :as => 'request_step1'
+  get 'step2/:request_id' => 'requests#step2', :as => 'request_step2'
+  get 'step3/:request_id' => 'requests#step3', :as => 'request_step3'
+  get 'request_review/:request_id' => 'requests#review', :as => 'request_review'
+  get 'request_confirm/:request_id' => 'requests#confirm', :as => 'request_confirm'
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
