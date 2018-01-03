@@ -25,6 +25,7 @@ gem 'hobo_jquery_ui', '2.2.6'
 gem 'hobo_bootstrap_ui', '2.2.6'
 gem 'jquery-ui-themes', '~> 0.0.4'
 gem 'hobo_clean_admin', '2.2.6'
+gem 'responders', '2.1.0'
 
 gem 'hobo-serenity', :git => 'https://github.com/iox/hobo-serenity.git'
 gem 'serenity-odt', :git => 'https://github.com/kremso/serenity.git'

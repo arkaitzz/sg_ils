@@ -13,50 +13,50 @@
 
 ActiveRecord::Schema.define(version: 20160905100103) do
 
-  create_table "addresses", force: true do |t|
-    t.string   "line1"
-    t.string   "line2"
-    t.string   "city"
-    t.string   "state"
-    t.integer  "zip"
-    t.integer  "phone"
+  create_table "addresses", force: :cascade do |t|
+    t.string   "line1",      limit: 255
+    t.string   "line2",      limit: 255
+    t.string   "city",       limit: 255
+    t.string   "state",      limit: 255
+    t.integer  "zip",        limit: 4
+    t.integer  "phone",      limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "user_id"
+    t.integer  "user_id",    limit: 4
   end
 
-  add_index "addresses", ["user_id"], name: "index_addresses_on_user_id"
+  add_index "addresses", ["user_id"], name: "index_addresses_on_user_id", using: :btree
 
-  create_table "requests", force: true do |t|
+  create_table "requests", force: :cascade do |t|
     t.datetime "start_time"
-    t.string   "place"
-    t.integer  "duration"
-    t.text     "observations"
+    t.string   "place",          limit: 255
+    t.integer  "duration",       limit: 4
+    t.text     "observations",   limit: 65535
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "user_id"
-    t.integer  "interpreter_id"
+    t.integer  "user_id",        limit: 4
+    t.integer  "interpreter_id", limit: 4
   end
 
-  add_index "requests", ["interpreter_id"], name: "index_requests_on_interpreter_id"
-  add_index "requests", ["user_id"], name: "index_requests_on_user_id"
+  add_index "requests", ["interpreter_id"], name: "index_requests_on_interpreter_id", using: :btree
+  add_index "requests", ["user_id"], name: "index_requests_on_user_id", using: :btree
 
-  create_table "users", force: true do |t|
+  create_table "users", force: :cascade do |t|
     t.string   "crypted_password",          limit: 40
     t.string   "salt",                      limit: 40
-    t.string   "remember_token"
+    t.string   "remember_token",            limit: 255
     t.datetime "remember_token_expires_at"
-    t.string   "name"
-    t.string   "email_address"
-    t.boolean  "administrator",                        default: false
-    t.boolean  "applicant",                            default: true
-    t.boolean  "interpreter",                          default: false
+    t.string   "name",                      limit: 255
+    t.string   "email_address",             limit: 255
+    t.boolean  "administrator",                         default: false
+    t.boolean  "applicant",                             default: true
+    t.boolean  "interpreter",                           default: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "state",                                default: "inactive"
+    t.string   "state",                     limit: 255, default: "inactive"
     t.datetime "key_timestamp"
   end
 
-  add_index "users", ["state"], name: "index_users_on_state"
+  add_index "users", ["state"], name: "index_users_on_state", using: :btree
 
 end
