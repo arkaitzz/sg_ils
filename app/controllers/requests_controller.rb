@@ -9,26 +9,36 @@ class RequestsController < ApplicationController
 
   def pre_steps_creation
     # TODO: Here we create a request attached to current user and proceed to edit on steps 1,2,3
-    redirect_to request_step1_path
+    @request = current_user.requests.new
+    if @request.save
+      redirect_to request_step1_path(@request.id)
+    else
+      flash[:notice] = 'could not create request'
+      redirect_to '/'
+    end
   end
 
   def step1 #TODO: Raise an exception if the user is not logged and trying to reach step1
     # This step for: DATE
+    @request.update_attributes(params[:request])
     flash[:notice] = 'step1 launch for'+ current_user.name
   end
 
   def step2
     # This step for: PLACE
+    @request.update_attributes(params[:request])
     flash[:notice] = 'step2 launch'
   end
 
   def step3
     # This step for: DURATION / OBSERVATIONS / SPECIAL NEEDS ...
+    @request.update_attributes(params[:request])
     flash[:notice] = 'step3 launch'
   end
 
   def review
     # TODO: Here we review all the introduced data and confirm the request 
+    @request.update_attributes(params[:request])
     flash[:notice] = 'review'
     redirect_to "/step1"
   end
