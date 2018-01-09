@@ -9,18 +9,23 @@
       <h3>Step 3/3</h3>
     </header>
     <section class="content-body">
-      Campos del form en el step3
+
       <br/>
-      <div style="margin-top:20px;float: right;">
-        <form action="#{request_step3_path(@request.id)}" method="get">
-          <input class="btn btn-primary button submit-button" value="Finish ⟶" type="submit"/>
-        </form>
-      </div>
-      <div style="margin-top:20px;float: left;">
-        <form action="#{request_step2_path(@request.id)}" method="get">
-          <input class="btn btn-primary button submit-button" value="⟵ Step2" type="submit"/>
-        </form>
-      </div>
+
+      <%= form_for :request, :url => request_review_path(@request.id), :method => "get" do |f| %>
+
+        <%= f.label :duration %>
+        <%= f.number_field :duration, class: 'form-control' %>
+
+        <%= f.label :observations %>
+        <%= f.text_area :observations, class: 'form-control' %>
+      <br/>
+        <%= f.submit "⟵ Step2", :class => "btn btn-primary button submit-button", :formaction => request_step2_path(@request.id), :method => "get" %>
+        <%= f.submit "Finish ⟶", :class => "btn btn-primary button submit-button" %>
+
+
+      <% end %>
+
     </section>
   </content:>
 

@@ -5,7 +5,7 @@ class RequestsController < ApplicationController
   auto_actions :all
   auto_actions_for :user, [:index, :new, :create]
   before_filter :set_self_user, :only => [:new_for_user]
-  before_filter :set_request, :only => [:step1, :step2, :step3]
+  before_filter :set_request, :only => [:step1, :step2, :step3, :review]
 
   def pre_steps_creation
     # TODO: Here we create a request attached to current user and proceed to edit on steps 1,2,3
@@ -40,7 +40,6 @@ class RequestsController < ApplicationController
     # TODO: Here we review all the introduced data and confirm the request 
     @request.update_attributes(params[:request])
     flash[:notice] = 'review'
-    redirect_to "/step1"
   end
 
   def confirm

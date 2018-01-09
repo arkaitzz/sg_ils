@@ -1,0 +1,23 @@
+<page title="Step3">
+
+  <body: class="front-page"/>
+
+  <content:>
+    <header class="content-header">
+      <h1>Review del de servicio</h1>
+      <h3>Usuario: #{current_user.name}</h3>
+      <h3>Review</h3>
+    </header>
+    <section class="content-body">
+
+      <br/>
+
+      <%= @request.inspect %>
+
+
+    </section>
+  </content:>
+
+</page>
+
+
