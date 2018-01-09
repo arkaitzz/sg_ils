@@ -11,6 +11,8 @@
     <section class="content-body">
 
     <%= form_for :request, :url => request_step2_path(@request.id), :method => "get" do |f| %>
+
+      <%= f.label :start_time %>
       <%= f.datetime_select :start_time %>
 
       <br/>
