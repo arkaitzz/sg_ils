@@ -5,7 +5,7 @@ class RequestsController < ApplicationController
   auto_actions :all
   auto_actions_for :user, [:index, :new, :create]
   before_filter :set_self_user, :only => [:new_for_user]
-  before_filter :set_request, :only => [:step1, :step2, :step3, :review]
+  before_filter :set_request, :only => [:step1, :step2, :step3, :review, :confirm]
 
   def pre_steps_creation
     # TODO: Here we create a request attached to current user and proceed to edit on steps 1,2,3
@@ -44,8 +44,13 @@ class RequestsController < ApplicationController
 
   def confirm
     # TODO: Here (state changes from pending -> confirmed)
-    flash[:notice] = 'confirm'
-    redirect_to "/step1"
+    @request.confirm_after_review
+    flash[:notice] = 'confirmed, ready for interpreters.'
+    redirect_to "/"
+  end
+
+  def my_requests
+    @requests = current_user.requests
   end
 
   def unassigned
@@ -61,6 +66,7 @@ class RequestsController < ApplicationController
       @request = Request.find(params[:request_id])
       #TODO: si el request no es de mi propiedad...
       #TODO: si el id que le paso no coincide con ningún request...
+      #TODO: rechazar el sistema de steps si esta confirmed a true
     end
 
     def set_self_user #No manually typing other's id's on the URL
