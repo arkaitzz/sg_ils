@@ -44,6 +44,7 @@ class RequestsController < ApplicationController
 
   def confirm
     # TODO: Here (state changes from pending -> confirmed)
+    # TODO: Once its confirmed, do we notify by mail interpreters?
     @request.confirm_after_review
     flash[:notice] = 'confirmed, ready for interpreters.'
     redirect_to "/"
