@@ -5,38 +5,53 @@ class RequestsController < ApplicationController
   auto_actions :all
   auto_actions_for :user, [:index, :new, :create]
   before_filter :set_self_user, :only => [:new_for_user]
-  before_filter :set_request, :only => [:step1, :step2, :step3]
+  before_filter :set_request, :only => [:step1, :step2, :step3, :review, :confirm]
 
   def pre_steps_creation
     # TODO: Here we create a request attached to current user and proceed to edit on steps 1,2,3
-    redirect_to request_step1_path
+    @request = current_user.requests.new
+    if @request.save
+      redirect_to request_step1_path(@request.id)
+    else
+      flash[:notice] = 'could not create request'
+      redirect_to '/'
+    end
   end
 
   def step1 #TODO: Raise an exception if the user is not logged and trying to reach step1
     # This step for: DATE
+    @request.update_attributes(params[:request])
     flash[:notice] = 'step1 launch for'+ current_user.name
   end
 
   def step2
     # This step for: PLACE
+    @request.update_attributes(params[:request])
     flash[:notice] = 'step2 launch'
   end
 
   def step3
     # This step for: DURATION / OBSERVATIONS / SPECIAL NEEDS ...
+    @request.update_attributes(params[:request])
     flash[:notice] = 'step3 launch'
   end
 
   def review
     # TODO: Here we review all the introduced data and confirm the request 
+    @request.update_attributes(params[:request])
     flash[:notice] = 'review'
-    redirect_to "/step1"
   end
 
   def confirm
     # TODO: Here (state changes from pending -> confirmed)
-    flash[:notice] = 'confirm'
-    redirect_to "/step1"
+    # TODO: Once its confirmed, do we notify by mail interpreters?
+    @request.confirm_after_review
+    flash[:notice] = 'confirmed, ready for interpreters.'
+    redirect_to "/"
+  end
+
+  def my_requests
+    @requests = current_user.requests
   end
 
   def unassigned
@@ -52,6 +67,7 @@ class RequestsController < ApplicationController
       @request = Request.find(params[:request_id])
       #TODO: si el request no es de mi propiedad...
       #TODO: si el id que le paso no coincide con ningún request...
+      #TODO: rechazar el sistema de steps si esta confirmed a true
     end
 
     def set_self_user #No manually typing other's id's on the URL

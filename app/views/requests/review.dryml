@@ -1,0 +1,47 @@
+<page title="Review">
+
+  <body: class="front-page"/>
+
+  <content:>
+    <header class="content-header">
+      <h1>Review del servicio</h1>
+      <h3>Usuario: #{current_user.name}</h3>
+      <h3>Review</h3>
+    </header>
+    <section class="content-body review-step">
+
+      <br/>
+      <div class="row">
+        <%= link_to request_step1_path(@request.id) do %>
+          <div class="span3 w3-cyan">
+            <%= @request.start_time.to_s %>
+          </div>
+        <% end %>
+        <%= link_to request_step2_path(@request.id) do %>
+          <div class="span4 w3-light-blue">
+            <%= @request.place.to_s %>
+          </div>
+        <% end %>
+        <%= link_to request_step3_path(@request.id) do %>
+          <div class="span4 w3-aqua">
+            <%= @request.duration.to_s %>
+            <br/>
+            <%= @request.observations.to_s %>
+          </div>
+        <% end %>
+      </div>
+
+    <%= form_for :request, :url => request_confirm_path(@request.id), :method => "get" do |f| %>
+      <br/>
+        <%= f.submit "⟵ Step3", :class => "btn btn-primary button submit-button", :formaction => request_step3_path(@request.id), :method => "get" %>
+        <%= f.submit "Confirm ⟶", :class => "btn btn-primary button submit-button" %>
+    <% end %>
+
+
+
+    </section>
+  </content:>
+
+</page>
+
+

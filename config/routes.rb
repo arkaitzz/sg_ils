@@ -17,6 +17,9 @@ ZHIK::Application.routes.draw do
   get 'step3/:request_id' => 'requests#step3', :as => 'request_step3'
   get 'request_review/:request_id' => 'requests#review', :as => 'request_review'
   get 'request_confirm/:request_id' => 'requests#confirm', :as => 'request_confirm'
+
+  # User requests
+  get 'my_requests' => 'requests#my_requests', :as => 'my_requests'
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
