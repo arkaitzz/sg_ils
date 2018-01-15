@@ -22,26 +22,11 @@ class User < ActiveRecord::Base
     if !Rails.env.test? && user.class.count == 0
       user.administrator = true
       user.applicant = false
-      user.state = "active"
-    end
-  end
-
-  def user_type
-    if self.applicant?
-      'Applicant'
-    else
-      if self.interpreter?
-        'Interpreter'
-      else
-        if self.administrator?
-        'Administrator'
-        end
-      end
+      user.state = 'active'
     end
   end
 
   # --- Change user_type --- #
-
   def become_interpreter
     self.update_attributes(:applicant => false, :interpreter => true)
   end
@@ -51,9 +36,7 @@ class User < ActiveRecord::Base
   end
 
   # --- Signup lifecycle --- #
-
   lifecycle do
-
     state :inactive, :default => true
     state :active
 
@@ -83,15 +66,13 @@ class User < ActiveRecord::Base
 
     transition :reset_password, { :active => :active }, :available_to => :key_holder,
                :params => [ :password, :password_confirmation ]
-
   end
 
   def signed_up?
-    state=="active"
+    state == 'active'
   end
 
   # --- Permissions --- #
-
   def create_permitted?
     # Only the initial admin user can be created
     self.class.count == 0

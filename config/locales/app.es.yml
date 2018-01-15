@@ -9,6 +9,13 @@
 # please post it to http://hobousers.googlegroups.com. Thank you!
 
 es:
+  user_forbidden: Este usuario no dispone del permiso requerido
+
+  mailers:
+    user:
+      forgoten_password: Contraseña olvidada
+      new_user: Nuevo usuario
+
   date:
     order:
       - :day
@@ -20,6 +27,9 @@ es:
        short: "%b %d"
        long: "%B %d, %Y"
 
+  user:
+    actions:
+      create: Usuario creado correctamente
   attributes:
     created_at: Creado el
     updated_at: Actualizado el
@@ -33,9 +43,9 @@ es:
       user:
         name: Nombre
         password: Contraseña
-        current_password: Contraseña Actual
-        password_confirmation: Confirmación Contraseña
-        email_address: Correo Electrónico
+        current_password: Contraseña actual
+        password_confirmation: Confirmación contraseña
+        email_address: Correo electrónico
 #    attribute_help:
 #      user:
 #        email_address:
