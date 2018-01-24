@@ -9,6 +9,29 @@
 # please post it to http://hobousers.googlegroups.com. Thank you!
 
 es:
+  home: Inicio
+  welcome: 
+    header: "Hola, esto es %{name}"
+    msg-00: "ZHIK es el servicio de gestión de interpretes de lengua de signos para el Pais Vasco, gestionado por <a href='http://euskal-gorrak.org' title='Sitio web de Euskalgorrak'>Euskalgorrak</a>"
+    msg-10: "Desde %{name} podrás:"
+    msg-20: Utilizar el servicio de Intérpretes de Lengua de Signos gratuito para todas las personas sordas del País Vasco.
+    msg-30: Seas socio/a de Euskal Gorrak o no, solicitar aquí el servicio ILS para tus gestiones personales.
+    msg-40: Para utilizar el servicio debes
+    btn-00-value: entrar si ya te has registrado
+    btn-00: 
+      value: entrar si ya te has registrado
+      title: Entrar al sistema
+    btn-10:
+      value: primero registrarte
+      title: Registrarse en el sistema
+
+  user_forbidden: Este usuario no dispone del permiso requerido
+
+  mailers:
+    user:
+      forgoten_password: Contraseña olvidada
+      new_user: Nuevo usuario
+
   date:
     order:
       - :day
@@ -20,6 +43,9 @@ es:
        short: "%b %d"
        long: "%B %d, %Y"
 
+  user:
+    actions:
+      create: Usuario creado correctamente
   attributes:
     created_at: Creado el
     updated_at: Actualizado el
@@ -33,9 +59,9 @@ es:
       user:
         name: Nombre
         password: Contraseña
-        current_password: Contraseña Actual
-        password_confirmation: Confirmación Contraseña
-        email_address: Correo Electrónico
+        current_password: Contraseña actual
+        password_confirmation: Confirmación contraseña
+        email_address: Correo electrónico
 #    attribute_help:
 #      user:
 #        email_address:

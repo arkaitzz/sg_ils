@@ -26,5 +26,17 @@ module ZHIK
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     config.i18n.default_locale = :es
+
+    # Action Mailer parameters
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+      :address=> 'server_address',
+      :port => 587,
+      :domain => 'domain.fake',
+      :authentication => :login,
+      :user_name => 'username',
+      :password => 'supersecret',
+      :enable_starttls_auto => true
+    }
   end
 end

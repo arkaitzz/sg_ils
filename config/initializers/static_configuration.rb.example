@@ -1,0 +1,16 @@
+# Per-installation configurable section:
+APP_NAME = 'ZHIK'
+APP_URL = 'https://zhik.euskal-gorrak.org'
+CONTACT_EMAIL = 'contacto@euskal-gorrak.org'
+FROM_EMAIL = 'no-reply@euskal-gorrak.org'
+SECRET_KEY_BASE = 'hi2pheich4aepheit9phoom7ahjiengaifiej3Ieg0fuaw6bo0paquanee4eethaif3quet3ze6ooN9no8ao3wai3waiQuohSo7u'
+
+# Modules:
+# ...
+
+# Watchout!
+# From this point on don't touch anything unless you know what you are doing!
+#
+# HoboSerenity configuration options
+ODT_TEMPLATES_PATH = 'lib/odt_templates/'
+

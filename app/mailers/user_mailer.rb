@@ -1,16 +1,19 @@
 class UserMailer < ActionMailer::Base
-  default :from => "no-reply@#{host}"
+  default :from => FROM_EMAIL
 
   def forgot_password(user, key)
     @user, @key = user, key
-    mail( :subject => "#{app_name} -- forgotten password",
+    @app_name = APP_NAME 
+    mail( :subject => "[#{@app_name}] #{I18n.t('mailers.user.forgoten_password')}",
           :to      => user.email_address )
   end
 
-
-  def activation(user, key)
-    @user, @key = user, key
-    mail( :subject => "#{app_name} -- activate",
+  def new_user(user)
+    @user = user
+    @app_name = APP_NAME 
+    @app_url = APP_URL
+    @contact_email = CONTACT_EMAIL
+    mail( :subject => "[#{@app_name}] #{I18n.t('mailers.user.new_user')}",
           :to      => user.email_address )
   end
 

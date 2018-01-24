@@ -8,5 +8,7 @@ require 'faker'
 User.delete_all
 
 # Admin user
-admin = User.create(:name => 'Administrator', :email_address => 'admin@zhik.info', :password => 'AdminPass', :administrator => true)
+if User.count.zero?
+  admin = User.create(:name => 'Administrator', :email_address => 'admin@zhik.info', :password => 'AdminPass', :administrator => true)
+end
 
