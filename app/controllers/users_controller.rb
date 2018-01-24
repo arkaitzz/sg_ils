@@ -14,7 +14,7 @@ class UsersController < ApplicationController
       if valid?
         self.current_user = this
         flash[:notice] = t('user.actions.create')
-        UserMailer.new_user(current_user, current_user.password).deliver
+        UserMailer.new_user(current_user).deliver
         redirect_to home_page
       end
     end

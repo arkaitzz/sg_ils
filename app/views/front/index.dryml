@@ -1,31 +1,37 @@
-<page title="Home">
+<page title="#{APP_NAME} - #{I18n.t('home')}">
 
-  <body: class="front-page"/>
+  <body: class='front-page'/>
 
   <content:>
-    <header class="content-header hero-unit">
-      <h1>Welcome to <app-name/></h1>
-      <section class="welcome-message">
-        <h3>Congratulations! Your Hobo Rails App is up and running</h3>
+    <header class='content-header'>
+      <h3><t key='welcome.header' name='&APP_NAME'/></h3>
+      <section class='welcome-message'>
+        <p><%= I18n.t('welcome.msg-00').html_safe %></p>
+        <p><t key='welcome.msg-10' name='&APP_NAME'/></p>
         <ul>
-          <li>Servicio de Intérpretes de Lengua de Signos gratuito para todas las personas sordas del País Vasco.</li>
-          <li>Seas socio/a de Euskal Gorrak o no, solicita aquí el servicio ILS para tus gestiones personales. </li>
+          <li><t key='welcome.msg-20'/></li>
+          <li><t key='welcome.msg-30'/></li>
         </ul>
-
-        <% if User.count == 0 -%>
-          <h3 style="margin-top: 20px;">There are no user accounts - please provide the details of the site administrator</h3>
-          <form with="&this || User.new" without-cancel>
-            <field-list: fields="name, email_address, password, password_confirmation"/>
-            <submit: label="Register Administrator"/>
-          </form>
-        <% end -%>
-
-
       </section>
     </header>
 
-    <section class="content-body">
+    <section class='content-body'>
+      <% if User.count.zero? -%>
+      <h3 style='margin-top:20px'>There are no user accounts - please provide the details of the site administrator</h3>
+      <form with='&this || User.new' without-cancel>
+        <field-list: fields='name, email_address, password, password_confirmation'/>
+        <submit: label='Register Administrator'/>
+      </form>
+      <% else -%>
+      <p>
+        <t key='welcome.msg-40'/> 
+        <a href='/login' title='&I18n.t("welcome.btn-00.title")' class='btn btn-success'><t key='welcome.btn-00.value'/></a>
+        <t key='hobo.support.or'/> 
+        <a href='/users/signup' title='&I18n.t("welcome.btn-10.title")' class='btn btn-info'><t key='welcome.btn-10.value'/></a>
+      </p>
+      <% end -%>
     </section>
+
   </content:>
 
 </page>
