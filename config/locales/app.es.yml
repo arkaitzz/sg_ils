@@ -9,6 +9,9 @@
 # please post it to http://hobousers.googlegroups.com. Thank you!
 
 es:
+  nav_item:
+    home: Inicio
+    home_title: Volver a Inicio
   home: Inicio
   welcome: 
     header: "Hola, esto es %{name}"
@@ -44,6 +47,29 @@ es:
        long: "%B %d, %Y"
 
   user:
+    index:
+      heading: Listado de usuarios
+      title: Listado de usuarios
+    main_menu:
+      actions_applicant:
+        title: Solicitante
+        new_request: Nueva solicitud
+        my_requests: Mis solicitudes
+        my_addresses: Mis direcciones
+        edit_profile: Mi perfil
+      actions_interpreter:
+        title: 'Intérprete'
+        my_calendar: Mi calendario
+        requests: Gestionar peticiones
+      actions_administrator:
+        title: Administrador
+        users: Gestionar usuarios
+        requests: Gestionar peticiones
+        main_calendar: Calendario general
+      heading: Selecciona acción
+      title: Selecciona acción
+      welcome: 'Hola %{name}, selecciona una acción:'
+
     actions:
       create: Usuario creado correctamente
   attributes:
@@ -62,6 +88,3 @@ es:
         current_password: Contraseña actual
         password_confirmation: Confirmación contraseña
         email_address: Correo electrónico
-#    attribute_help:
-#      user:
-#        email_address:

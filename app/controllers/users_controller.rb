@@ -4,8 +4,6 @@ class UsersController < ApplicationController
 
   auto_actions :all, :except => [:index, :new, :create]
 
-  before_filter :set_user, :only => [:main_menu, :role_set]
-
   # Normally, users should be created via the user lifecycle, except
   #  for the initial user created via the form on the front screen on
   #  first run.  This method creates the initial user.
@@ -20,9 +18,30 @@ class UsersController < ApplicationController
     end
   end
 
+  def do_signup
+    hobo_create do
+      UserMailer.new_user(this).deliver if valid?
+    end
+  end
+
+  def forgot_password
+    if request.post?
+      user = model.find_by_email_address(params[:email_address].to_s)
+      if !user.blank?
+        if user.state == 'active'
+          user.lifecycle.request_password_reset!(:nobody)
+          render :forgot_password_email_sent
+        else
+          render :account_disabled
+        end
+      else
+        render :forgot_password_no_user
+      end
+    end
+  end
+
   def main_menu
-    # Set user
-    @user_type = current_user.user_type
+    @user = current_user
   end
 
   def role_set
@@ -35,14 +54,6 @@ class UsersController < ApplicationController
     @applicants = User.all.applicant
     @interpreters = User.all.interpreter
     hobo_ajax_response if request.xhr?
-  end
-
-  protected
-
-  def set_user
-    # If user is a Guest, redirect to front page
-    redirect_to '/' if current_user.class != User
-    @user = current_user
   end
 
 end

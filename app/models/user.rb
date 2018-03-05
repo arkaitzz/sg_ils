@@ -12,10 +12,12 @@ class User < ActiveRecord::Base
   end
   attr_accessible :name, :email_address, :password, :password_confirmation, :current_password, :addresses
 
+  # --- Relations --- #
   has_many :addresses, :class_name => "Address"
   has_many :requests
   has_many :interpretation_request, :class_name => "Request"
 
+  # --- Callbacks --- #
   # This gives admin rights and an :active state to the first sign-up.
   # Just remove it if you don't want that
   before_create do |user|
@@ -46,15 +48,14 @@ class User < ActiveRecord::Base
       UserMailer.activation(self, lifecycle.key).deliver
     end
 
-    transition :activate, { :inactive => :active }, :available_to => :key_holder
-
-    transition :request_password_reset, { :inactive => :inactive }, :new_key => true do
-      UserMailer.activation(self, lifecycle.key).deliver
-    end
-
     transition :request_password_reset, { :active => :active }, :new_key => true do
       UserMailer.forgot_password(self, lifecycle.key).deliver
     end
+
+    transition :reset_password, { :active => :active }, :available_to => :key_holder,
+               :params => [ :password, :password_confirmation ]
+
+    transition :activate, { :inactive => :active }, :available_to => :key_holder
 
     transition :be_interpreter, { :active => :active }, :available_to => :all do
       self.become_interpreter
@@ -63,9 +64,6 @@ class User < ActiveRecord::Base
     transition :be_applicant, { :active => :active }, :available_to => :all do
       self.become_applicant
     end
-
-    transition :reset_password, { :active => :active }, :available_to => :key_holder,
-               :params => [ :password, :password_confirmation ]
   end
 
   def signed_up?
@@ -74,8 +72,7 @@ class User < ActiveRecord::Base
 
   # --- Permissions --- #
   def create_permitted?
-    # Only the initial admin user can be created
-    self.class.count == 0
+    true
   end
 
   def update_permitted?
@@ -91,6 +88,6 @@ class User < ActiveRecord::Base
   end
 
   def view_permitted?(field)
-    acting_user.administrator? || acting_user.interpreter? || (acting_user == self) #No funciona el signup por este permiso
+    true
   end
 end

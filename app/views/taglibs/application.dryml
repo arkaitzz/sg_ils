@@ -1,8 +1,87 @@
-<!-- this file is included by front_site.dryml, admin_site.dryml et al, so
-you can place common code in this file. -->
+<!-- Extensions -->
+<extend tag='account-nav'>
+  <old-account-nav merge>
+    <logged-in-as: replace/>
+    <live-search: replace/>
+    <log-in: replace/>
+    <sign-up: replace/>
+  </old-account-nav>
+</extend>
+
+<extend tag='login-page'>
+  <old-login-page merge>
+    <navbar: replace>
+      <recover-navbar/>
+    </navbar:>
+    <after-content:>
+      <setfocus element='#login'/>
+    </after-content:>
+  </old-login-page>
+</extend>
+
+<extend tag='forgot-password-page'>
+  <old-forgot-password-page merge>
+    <navbar: replace>
+      <recover-navbar/>
+    </navbar:>
+    <after-content:>
+      <setfocus element='#email-address'/>
+    </after-content:>
+  </old-forgot-password-page>
+</extend>
+
+<extend tag='forgot-password-email-sent-page'>
+  <old-forgot-password-email-sent-page merge>
+    <navbar: replace>
+      <recover-navbar/>
+    </navbar:>
+  </old-forgot-password-email-sent-page>
+</extend>
+
+<extend tag='account-disabled-page'>
+  <old-account-disabled-page merge>
+    <navbar: replace>
+      <recover-navbar/>
+    </navbar:>
+  </old-account-disabled-page>
+</extend>
 
 <!-- Tags -->
 <def tag='app-name'>
   <%= APP_NAME %>
 </def>
 
+<def tag='main-nav'>
+  <hobo-cache suffix='nav'>
+    <navigation class='main-nav' merge-attrs param='default'>
+      <nav-item href='/' title='&I18n.t("nav_item.home_title")'><t key='nav_item.home' count='100'></t></nav-item>
+    </navigation>
+  </hobo-cache>
+</def>
+
+<def tag='setfocus' attrs='element'>
+  <script type='text/javascript'>
+  jQuery( document ).ready(function() {
+    jQuery("#{element}").focus();
+  });
+  </script>
+</def>
+
+<def tag='recover-navbar'>
+  <div class='navbar'>
+    <div class='navbar-inner'>
+      <header class='container'>
+        <a href='#' class='btn btn-navbar' data-toggle='collapse' data-target='.nav-collapse'>
+          <span class='icon-bar'></span>
+          <span class='icon-bar'></span>
+          <span class='icon-bar'></span>
+        </a>
+        <div class='app-name'>
+          <a class='brand' href="#{base_url}/"><app-name/></a>
+        </div>
+        <main-nav class='nav'/>
+        <account-nav/>
+      </header>
+    </div>
+  </div>
+</def>
