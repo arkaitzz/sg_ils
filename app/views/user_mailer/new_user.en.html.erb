@@ -1,0 +1,15 @@
+Dear <%= @user %>,
+<br/><br/>
+You have signed in correctly in <%= @app_name %>.
+<br/><br/>
+Your login details are: <%= @user.email_address %> and the password you have chosen.
+<br/><br/>
+Now you can go back to your application at <%= @app_url %>
+<br/><br/>
+For any questions or enquiries you can contact us at http://euskal-gorrak.org
+<br/><br/>
+Thank you,
+<br/><br/>
+The <%= @app_name %> team.
+<br/><br/>
+<%= image_tag attachments['logo_email_html.png'].url %>

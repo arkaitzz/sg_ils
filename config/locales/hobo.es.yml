@@ -53,65 +53,64 @@ es:
       password: "Contraseña"
       remember_me: "Recuerda mis datos"
       login: "Identificación"
-      signup: "Registro"
+      signup: Registro
       forgot_password: &forgot_password "¿Contraseña olvidada?"
 
     signup:
-      title: "Registro"
-      heading: "Registrar nuevo usuario"
+      title: Registro
+      heading: Registrar nuevo usuario
 
     forgot_password:
       title: *forgot_password
       heading: *forgot_password
-      text: "Introduce la dirección de correo electrónico mediante la cual te registraste. Te enviaremos un correo con instrucciones para generar una nueva contraseña."
+      text: Introduce la dirección de correo electrónico mediante la cual te registraste. Te enviaremos un correo con instrucciones para generar una nueva contraseña.
       email_address: *email_address
-      send: "Enviar nueva contraseña"
+      send: Enviar nueva contraseña
 
     forgot_password_sent:
-      title: "Contraseña olvidada - Correo eléctronico enviado"
-      heading: "Contraseña olvidada - Correo eléctronico enviado"
-      text: "El mensaje con las instrucciones para generar una nueva contraseña ha sido enviado a %{email_address}
-             Si no lo recibes, por favor verifica el filtro anti-spam."
+      title: Contraseña olvidada - Correo eléctronico enviado
+      heading: Contraseña olvidada - Correo eléctronico enviado
+      text: 'El mensaje con las instrucciones para generar una nueva contraseña ha sido enviado a <strong>%{email_address}</strong>. Si no lo localizas en tu Bandeja de entrada, por favor verifica el filtro anti-spam.'
 
     forgot_password_no_user:
-      title: Contraseña olvidada - No existe usuario
-      heading: Contraseña olvidada - No existe usuario
+      title: Contraseña olvidada - No existe el usuario
+      heading: Contraseña olvidada - No existe el usuario
       text: "No existe ningún usuario con esta dirección de correo electrónico. <a href='/forgot_password' title='Volver a Contraseña olvidada'>¿Quieres volverlo a intentar?</a>."
 
     account_disabled_page:
-      title: "Cuenta desactivada"
-      heading: "Cuenta desactivada"
+      title: Contraseña olvidada - Cuenta desactivada
+      heading: Contraseña olvidada - Cuenta desactivada
       text: 'Tu cuenta todavía no está activada: si te has registrado hace poco por favor <strong>espera 24 horas</strong> al menos para que podamos activarla. Si ya ha pasado ese intervalo de tiempo, puedes <strong>ponerte en contacto con <a href="http://euskal-gorrak.org/" title="Sitio web de Euskalgorrak">Euskalgorrak</a></strong> para solicitar mas información.'
 
     account_page:
-      title: "Tu perfil"
-      heading: "Tu perfil"
-      new_password: "Nueva contraseña"
-      confirm_new_password: "Confirmación nueva contraseña"
+      title: Tu perfil
+      heading: Tu perfil
+      new_password: Nueva contraseña
+      confirm_new_password: Confirmación nueva contraseña
 
     # default hobo action translation
     actions:
       new: "Nuevo registro de %{model}"
       create: "Crear %{model}"
-      previous: "Anterior"
-      next: "Siguiente"
-      add: "Añadir"
+      previous: Anterior
+      next: Siguiente
+      add: Añadir
       show_all: "Muestra todos %{model}..."
       delete: "Borrar %{model}"
       save: "Guardar %{model}"
-      cancel: "Cancelar"
+      cancel: Cancelar
       edit: "Actualizar %{model}"
-      edit_control: "Actualizar"
-      back: "Volver a"
+      edit_control: Actualizar
+      back: Volver a
       back_to_parent: "Volver a %{parent} %{name}"
-      send: "Enviar"
-      remove: "Eliminar"
-      signup: "Registro"
-      login: "Iniciar sesión"
-      logout: "Terminar sesión"
+      send: Enviar
+      remove: Eliminar
+      signup: Registro
+      login: Iniciar sesión
+      logout: Terminar sesión
       logged_in_as: "%{name}"
-      account: "Perfil"
-      save_account: "Guarda tu perfil"
+      account: Perfil
+      save_account: Guarda tu perfil
 
     # default hobo message translation
     messages:

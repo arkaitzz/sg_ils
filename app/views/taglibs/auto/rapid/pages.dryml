@@ -36,7 +36,7 @@
 
     <content-body: param>
       <a action="new" to="&model" param="new-link">
-        <ht key="address.actions.new">New [es.activerecord.models.address]Address</ht>
+        <ht key="address.actions.new">New Address</ht>
       </a>
 
       <page-nav param="top-page-nav"/>
@@ -52,20 +52,20 @@
 
 
 <def tag="new-page" for="Address">
-  <page merge title="#{ht 'address.new.title', :default=>[' New [es.activerecord.models.address]Address'] }">
+  <page merge title="#{ht 'address.new.title', :default=>[' New Address'] }">
     <body: class="new-page address" param/>
 
     <content-header: param>
       <h2 param="heading">
         <ht key="address.new.heading">
-          New [es.activerecord.models.address]Address
+          New Address
         </ht>
       </h2>
     </content-header:>
 
     <content-body: param>
       <form param>
-        <submit: label="#{ht 'address.actions.create', :default=>['Create [es.activerecord.models.address]Address']}"/>
+        <submit: label="#{ht 'address.actions.create', :default=>['Create Address']}"/>
       </form>
     </content-body:>
   </page>
@@ -73,14 +73,14 @@
 
 
 <def tag="show-page" for="Address">
-  <page merge title="#{ht 'address.show.title', :default=>['[es.activerecord.models.address]Address'], :name => name(:no_wrapper => true) }" without-aside >
+  <page merge title="#{ht 'address.show.title', :default=>['Address'], :name => name(:no_wrapper => true) }" without-aside >
 
     <body: class="show-page address" param/>
 
     <content-header: param>
       <h2 param="heading">
         <ht key="address.show.heading" name="#{name(:no_wrapper => true)}">
-          [es.activerecord.models.address]Address <name/>
+          Address <name/>
         </ht>
       </h2>
 
@@ -88,7 +88,7 @@
 
       <a action="edit" if="&can_edit?" param="edit-link">
         <ht key="address.actions.edit" name="#{name(:no_wrapper => true)}">
-          Edit [es.activerecord.models.address]Address
+          Edit Address
         </ht>
       </a>
     </content-header:>
@@ -102,17 +102,17 @@
 
 
 <def tag="edit-page" for="Address">
-  <page merge title="#{ht 'address.edit.title', :default=>['Edit [es.activerecord.models.address]Address'], :name => name(:no_wrapper => true) }">
+  <page merge title="#{ht 'address.edit.title', :default=>['Edit Address'], :name => name(:no_wrapper => true) }">
 
     <body: class="edit-page address" param/>
 
     <content-header: param>
       <h2 param="heading">
         <ht key="address.edit.heading" name="#{name(:no_wrapper => true)}">
-          Edit [es.activerecord.models.address]Address
+          Edit Address
         </ht>
       </h2>
-      <delete-button label="#{ht 'address.actions.delete', :default=>['Remove This [es.activerecord.models.address]Address']}" param/>
+      <delete-button label="#{ht 'address.actions.delete', :default=>['Remove This Address']}" param/>
     </content-header:>
 
     <content-body: param>
@@ -124,7 +124,7 @@
 
 <def tag="index-for-user-page" polymorphic/>
 <def tag="index-for-user-page" for="Address">
-  <page merge title="#{ht 'address.index_for_owner.title', :count=>100, :default=>['[es.activerecord.models.address]Address for']} #{name :with => @user, :no_wrapper => true}">
+  <page merge title="#{ht 'address.index_for_owner.title', :count=>100, :default=>['Address for']} #{name :with => @user, :no_wrapper => true}">
     <body: class="index-for-owner-page user address" param/>
     <content-header: param>
       <div param="back-to">
@@ -144,7 +144,7 @@
 
     <content-body: param>
       <a action="new" to="&@user.addresses" param="new-link">
-        <ht key="address.actions.new" >New [es.activerecord.models.address]Address</ht>
+        <ht key="address.actions.new" >New Address</ht>
       </a>
 
 
@@ -160,7 +160,7 @@
 
 <def tag="new-for-user-page" polymorphic/>
 <def tag="new-for-user-page" for="Address">
-  <page merge title="#{ht 'address.new_for_owner.title', :default=>['New [es.activerecord.models.address]Address for']} #{name :with => @user}">
+  <page merge title="#{ht 'address.new_for_owner.title', :default=>['New Address for']} #{name :with => @user}">
     <body: class="new-for-owner-page  address" param/>
 
     <content-header: param>
@@ -180,7 +180,7 @@
     <content-body: param>
       <form owner="user" method="post" param>
         <field-list: skip="user"/>
-        <submit: label="#{ht 'address.actions.create', :default=>['Create [es.activerecord.models.address]Address']}"/>
+        <submit: label="#{ht 'address.actions.create', :default=>['Create Address']}"/>
       </form>
     </content-body:>
   </page>
@@ -212,7 +212,7 @@
 
     <content-body: param>
       <a action="new" to="&model" param="new-link">
-        <ht key="request.actions.new">New [es.activerecord.models.request]Request</ht>
+        <ht key="request.actions.new">New Request</ht>
       </a>
 
       <page-nav param="top-page-nav"/>
@@ -228,20 +228,20 @@
 
 
 <def tag="new-page" for="Request">
-  <page merge title="#{ht 'request.new.title', :default=>[' New [es.activerecord.models.request]Request'] }">
+  <page merge title="#{ht 'request.new.title', :default=>[' New Request'] }">
     <body: class="new-page request" param/>
 
     <content-header: param>
       <h2 param="heading">
         <ht key="request.new.heading">
-          New [es.activerecord.models.request]Request
+          New Request
         </ht>
       </h2>
     </content-header:>
 
     <content-body: param>
       <form param>
-        <submit: label="#{ht 'request.actions.create', :default=>['Create [es.activerecord.models.request]Request']}"/>
+        <submit: label="#{ht 'request.actions.create', :default=>['Create Request']}"/>
       </form>
     </content-body:>
   </page>
@@ -249,14 +249,14 @@
 
 
 <def tag="show-page" for="Request">
-  <page merge title="#{ht 'request.show.title', :default=>['[es.activerecord.models.request]Request'], :name => name(:no_wrapper => true) }" without-aside >
+  <page merge title="#{ht 'request.show.title', :default=>['Request'], :name => name(:no_wrapper => true) }" without-aside >
 
     <body: class="show-page request" param/>
 
     <content-header: param>
       <h2 param="heading">
         <ht key="request.show.heading" name="#{name(:no_wrapper => true)}">
-          [es.activerecord.models.request]Request <name/>
+          Request <name/>
         </ht>
       </h2>
 
@@ -264,7 +264,7 @@
 
       <a action="edit" if="&can_edit?" param="edit-link">
         <ht key="request.actions.edit" name="#{name(:no_wrapper => true)}">
-          Edit [es.activerecord.models.request]Request
+          Edit Request
         </ht>
       </a>
     </content-header:>
@@ -278,17 +278,17 @@
 
 
 <def tag="edit-page" for="Request">
-  <page merge title="#{ht 'request.edit.title', :default=>['Edit [es.activerecord.models.request]Request'], :name => name(:no_wrapper => true) }">
+  <page merge title="#{ht 'request.edit.title', :default=>['Edit Request'], :name => name(:no_wrapper => true) }">
 
     <body: class="edit-page request" param/>
 
     <content-header: param>
       <h2 param="heading">
         <ht key="request.edit.heading" name="#{name(:no_wrapper => true)}">
-          Edit [es.activerecord.models.request]Request
+          Edit Request
         </ht>
       </h2>
-      <delete-button label="#{ht 'request.actions.delete', :default=>['Remove This [es.activerecord.models.request]Request']}" param/>
+      <delete-button label="#{ht 'request.actions.delete', :default=>['Remove This Request']}" param/>
     </content-header:>
 
     <content-body: param>
@@ -300,7 +300,7 @@
 
 <def tag="index-for-user-page" polymorphic/>
 <def tag="index-for-user-page" for="Request">
-  <page merge title="#{ht 'request.index_for_owner.title', :count=>100, :default=>['[es.activerecord.models.request]Request for']} #{name :with => @user, :no_wrapper => true}">
+  <page merge title="#{ht 'request.index_for_owner.title', :count=>100, :default=>['Request for']} #{name :with => @user, :no_wrapper => true}">
     <body: class="index-for-owner-page user request" param/>
     <content-header: param>
       <div param="back-to">
@@ -320,7 +320,7 @@
 
     <content-body: param>
       <a action="new" to="&@user.requests" param="new-link">
-        <ht key="request.actions.new" >New [es.activerecord.models.request]Request</ht>
+        <ht key="request.actions.new" >New Request</ht>
       </a>
 
 
@@ -336,7 +336,7 @@
 
 <def tag="new-for-user-page" polymorphic/>
 <def tag="new-for-user-page" for="Request">
-  <page merge title="#{ht 'request.new_for_owner.title', :default=>['New [es.activerecord.models.request]Request for']} #{name :with => @user}">
+  <page merge title="#{ht 'request.new_for_owner.title', :default=>['New Request for']} #{name :with => @user}">
     <body: class="new-for-owner-page  request" param/>
 
     <content-header: param>
@@ -356,7 +356,7 @@
     <content-body: param>
       <form owner="user" method="post" param>
         <field-list: skip="user"/>
-        <submit: label="#{ht 'request.actions.create', :default=>['Create [es.activerecord.models.request]Request']}"/>
+        <submit: label="#{ht 'request.actions.create', :default=>['Create Request']}"/>
       </form>
     </content-body:>
   </page>
@@ -397,7 +397,7 @@
 
       <div param="new-form">
         <h3 param="new-form-heading">
-          <ht key="user.form.new.heading">New [es.activerecord.models.user]User</ht>
+          <ht key="user.form.new.heading">New User</ht>
         </h3>
         <form with="&@invalid_record || new_for_current_user(User)" param/>
       </div>
@@ -408,20 +408,20 @@
 
 
 <def tag="new-page" for="User">
-  <page merge title="#{ht 'user.new.title', :default=>[' New [es.activerecord.models.user]User'] }">
+  <page merge title="#{ht 'user.new.title', :default=>[' New User'] }">
     <body: class="new-page user" param/>
 
     <content-header: param>
       <h2 param="heading">
         <ht key="user.new.heading">
-          New [es.activerecord.models.user]User
+          New User
         </ht>
       </h2>
     </content-header:>
 
     <content-body: param>
       <form param>
-        <submit: label="#{ht 'user.actions.create', :default=>['Create [es.activerecord.models.user]User']}"/>
+        <submit: label="#{ht 'user.actions.create', :default=>['Create User']}"/>
       </form>
     </content-body:>
   </page>
@@ -429,14 +429,14 @@
 
 
 <def tag="show-page" for="User">
-  <page merge title="#{ht 'user.show.title', :default=>['[es.activerecord.models.user]User'], :name => name(:no_wrapper => true) }" without-aside >
+  <page merge title="#{ht 'user.show.title', :default=>['User'], :name => name(:no_wrapper => true) }" without-aside >
 
     <body: class="show-page user" param/>
 
     <content-header: param>
       <h2 param="heading">
         <ht key="user.show.heading" name="#{name(:no_wrapper => true)}">
-          [es.activerecord.models.user]User <name/>
+          User <name/>
         </ht>
       </h2>
 
@@ -444,7 +444,7 @@
 
       <a action="edit" if="&can_edit?" param="edit-link">
         <ht key="user.actions.edit" name="#{name(:no_wrapper => true)}">
-          Edit [es.activerecord.models.user]User
+          Edit User
         </ht>
       </a>
     </content-header:>
@@ -458,17 +458,17 @@
 
 
 <def tag="edit-page" for="User">
-  <page merge title="#{ht 'user.edit.title', :default=>['Edit [es.activerecord.models.user]User'], :name => name(:no_wrapper => true) }">
+  <page merge title="#{ht 'user.edit.title', :default=>['Edit User'], :name => name(:no_wrapper => true) }">
 
     <body: class="edit-page user" param/>
 
     <content-header: param>
       <h2 param="heading">
         <ht key="user.edit.heading" name="#{name(:no_wrapper => true)}">
-          Edit [es.activerecord.models.user]User
+          Edit User
         </ht>
       </h2>
-      <delete-button label="#{ht 'user.actions.delete', :default=>['Remove This [es.activerecord.models.user]User']}" param/>
+      <delete-button label="#{ht 'user.actions.delete', :default=>['Remove This User']}" param/>
     </content-header:>
 
     <content-body: param>
