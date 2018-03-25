@@ -46,6 +46,54 @@
   </old-account-disabled-page>
 </extend>
 
+<extend tag='account-page'>
+  <old-account-page merge>
+    <append-scripts:>
+      <setfocus element="input[name='user[name]']"/>
+    </append-scripts:>
+    <heading: replace>
+      <h2><t key='hobo.account_page.heading'/></h2>
+    </heading>
+    <field-list: replace>
+      <div class='row upperspace'>
+        <div class='span8'>
+          <field-list fields='name, email_address' size='8' columns='2'/>
+          <field-list fields='current_password' size='8' columns='1'/>
+          <field-list fields='password, password_confirmation' size='8' columns='2'/>
+        </div>
+      </div>
+    </field-list:>
+    <append-actions:>
+      <t key='hobo.support.or'/> <a href='/menu' title='&I18n.t("user.main_menu.back_to_title")'><t key='hobo.actions.cancel'/></a>
+    </append-actions:>
+  </old-account-page>
+</extend>
+
+<extend tag='page'>
+  <old-page merge>
+    
+    <append-head:>
+      <link rel='shortcut icon' href='/favicon.ico'/>
+    </append-head:>
+
+    <footer:>
+      <div class='container zhik-data'>
+        <%= image_tag('logo_footer.png', alt: 'ZHIK logo') %><br/>
+        <strong><t key='zhik.brand.footer.sentence1' year='&Time.now.year'/></strong><br/>
+        <t key='zhik.brand.footer.sentence2'/><br/>
+        <t key='zhik.brand.footer.sentence3'/><br/>
+        <t key='zhik.brand.footer.sentence4'/>
+      </div>
+      <div class='container authors'>
+        <ul>
+          <li><t key='zhik.brand.footer.sentence5'/></li>
+        </ul>
+      </div>
+    </footer:>
+    
+  </old-page>
+</extend>
+
 <!-- Tags -->
 <def tag='app-name'>
   <%= APP_NAME %>

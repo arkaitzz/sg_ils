@@ -1,0 +1,35 @@
+<show-page without-record-flags>
+  <content-header: replace>
+    <div class='header content-header'>
+    <h3>
+      <%= @user.name %> 
+      <span class='label label-info'>
+        <t key="activerecord.attributes.user.lifecycle.states.#{this.state}"/>
+      </span> 
+      <span class='label label-info'>
+        <t key="activerecord.attributes.user.profile_#{this.profile}"/>
+      </span>
+      <a class='pull-right btn btn-success' href="/users/#{this.id}/account" title='Editar tu cuenta'>
+        <i class='icon-pencil icon-white'></i> <t key='hobo.actions.edit' model='&I18n.t("activerecord.models.user.one")'/>
+      </a>
+    </h3>
+    </div>
+  </content-header:>
+  <content-body: replace>
+    <div class='form-horizontal'>
+      <div class='row'>
+        <div class='span8'>
+          <field-list fields='created_at' size='8' columns='1'>
+            <created-at-view:><%= I18n.l(this.to_date, format: :longer).downcase %></created-at-view:>
+          </field-list>
+          <field-list fields='name, email_address' size='8' columns='2'>
+            <email-address-view:><a href='mailto:#{this}'><%= this %></a></email-address-view:>
+          </field-list>
+        </div>
+      </div>
+    </div>
+    <h4><t key='lifecycle.name'/></h4>
+    <transition-buttons/><else><t key='lifecycle.none'/></else>
+  </content-body:>
+</show-page>
+

@@ -59,6 +59,7 @@ es:
     signup:
       title: Registro
       heading: Registrar nuevo usuario
+      already: Ya tengo una cuenta
 
     forgot_password:
       title: *forgot_password
@@ -118,7 +119,7 @@ es:
         success: "La creación de %{model} ha sido exitosa"
         error: "La creación de %{model} no ha sido exitosa.\n%{errors}"
       creator:
-        error: "El creator %{name} no se pudo executar.\n%{errors}"
+        error: "El creador %{name} no se pudo ejecutar.\n%{errors}"
       transition:
         error: "La transición %{name} no se pudo ejecutar.\n%{errors}"
       update:

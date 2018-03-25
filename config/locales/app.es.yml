@@ -9,6 +9,14 @@
 # please post it to http://hobousers.googlegroups.com. Thank you!
 
 es:
+  zhik:
+    brand:
+      footer:
+        sentence1: '&copy; %{year} - Todos los derechos reservados'
+        sentence2: 'Teléfonos: +34 XX XX XX / +34 XX XX XX'
+        sentence3: "Correo electrónico: <a href='mailto:zhik@euskal-gorrak.org'>zhik@euskal-gorrak.org</a>"
+        sentence4: "Web: <a href='https://euskal-gorrak.org'>Euskalgorrak</a>"
+        sentence5: "Funciona con <a id='ubuntu-footer' target='_blank' href='http://www.ubuntu.com/' title='Sitio web de Ubuntu.com'>Ubuntu GNU/Linux</a>"
   nav_item:
     home: Inicio
     home_title: Volver a Inicio
@@ -29,6 +37,10 @@ es:
       title: Registrarse en el sistema
 
   user_forbidden: Este usuario no dispone del permiso requerido
+
+  lifecycle:
+    name: Ciclo de vida
+    none: No hay ninguna acción
 
   mailers:
     user:
@@ -51,6 +63,7 @@ es:
       heading: Listado de usuarios
       title: Listado de usuarios
     main_menu:
+      back_to_title: Volver al menú
       actions_applicant:
         title: Solicitante
         new_request: Nueva solicitud
@@ -68,10 +81,11 @@ es:
         main_calendar: Calendario general
       heading: Selecciona acción
       title: Selecciona acción
-      welcome: 'Hola %{name}, selecciona una acción:'
+      welcome: 'Hola %{name}, por favor elige la acción que deseas'
 
     actions:
       create: Usuario creado correctamente
+      signup_completed: Se ha creado el usuario correctamente. Por favor comprueba tu correo electrónico.
   attributes:
     created_at: Creado el
     updated_at: Actualizado el
@@ -88,3 +102,26 @@ es:
         current_password: Contraseña actual
         password_confirmation: Confirmación contraseña
         email_address: Correo electrónico
+        profile: Perfil
+        profile_applicant: Solicitante
+        profile_interpreter: Intérprete
+        profile_administrator: Administrador
+        lifecycle:
+          states:
+            inactive: Inactivo
+            active: Activo
+          transitions:
+            be_administrator: Convertir a Administrador
+            be_interpreter: Convertir a Intérprete
+            be_applicant: Convertir a Solicitante
+            mark_as_active: Activar Usuario
+            mark_as_inactive: Desactivar Usuario
+    attribute_help:
+      user:
+        lifecycle:
+          transitions:
+            be_administrator: El usuario tomará el rol de administrador.
+            be_interpreter: El usuario tomará el rol de intérprete.
+            be_applicant: El usuario tomará el rol de solicitante.
+            mark_as_active: El usuario podrá entrar de nuevo en la plataforma y operar en ella.
+            mark_as_inactive: El usuario no podrá entrar de nuevo en la plataforma y ni operar en ella.

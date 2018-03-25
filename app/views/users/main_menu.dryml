@@ -1,3 +1,5 @@
+<include src='main_menu_lib'/>
+
 <page title="#{I18n.t 'user.main_menu.heading'}">
 
   <body: class='front-page'/>
@@ -5,38 +7,12 @@
   <content:>
     <header class='content-header'>
       <section class='welcome-message'>
-        <h3><t key='user.main_menu.welcome' name='@user.name'/></h3>
+        <h3><t key='user.main_menu.welcome' name='&@user.name'/></h3>
       </section>
     </header>
 
     <section class='content-body'>
-      <div class='row'>
-        <if test='&@user.applicant?'>
-        <span class='label label-success'><t key='user.main_menu.actions_applicant.title'/></span>
-        <div class='row'>
-          <div class='span3'>
-            <a href="#{new_request_creation_path}">
-              <button class='w3-btn w3-indigo'><t key='user.main_menu.actions_applicant.new_request'/></button>
-            </a>
-          </div>
-          <div class='span3'>
-            <a href="#{my_requests_path}">
-              <button class='w3-btn w3-blue'><t key='user.main_menu.actions_applicant.my_requests'/></button>
-            </a>
-          </div>
-          <div class='span3'>
-            <a href="/users/#{@user.id}/addresses/">
-              <button class='w3-btn w3-deep-purple'><t key='user.main_menu.actions_applicant.my_addresses'/></button>
-            </a>
-          </div>
-          <div class='span2'>
-            <a href="/users/#{@user.id}/edit">
-              <button class='w3-btn w3-light-blue'><t key='user.main_menu.actions_applicant.edit_profile'/></button>
-            </a>
-          </div>
-        </div>
-        </if>
-      </div>
+      <call-tag tag="#{@user.profile}-menu"/>
     </section>
   </content:>
 

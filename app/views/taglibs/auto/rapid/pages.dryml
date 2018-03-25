@@ -124,7 +124,7 @@
 
 <def tag="index-for-user-page" polymorphic/>
 <def tag="index-for-user-page" for="Address">
-  <page merge title="#{ht 'address.index_for_owner.title', :count=>100, :default=>['Address for']} #{name :with => @user, :no_wrapper => true}">
+  <page merge title="#{ht 'address.index_for_owner.title', :count=>100, :default=>['Addresses for']} #{name :with => @user, :no_wrapper => true}">
     <body: class="index-for-owner-page user address" param/>
     <content-header: param>
       <div param="back-to">
@@ -300,7 +300,7 @@
 
 <def tag="index-for-user-page" polymorphic/>
 <def tag="index-for-user-page" for="Request">
-  <page merge title="#{ht 'request.index_for_owner.title', :count=>100, :default=>['Request for']} #{name :with => @user, :no_wrapper => true}">
+  <page merge title="#{ht 'request.index_for_owner.title', :count=>100, :default=>['Requests for']} #{name :with => @user, :no_wrapper => true}">
     <body: class="index-for-owner-page user request" param/>
     <content-header: param>
       <div param="back-to">
@@ -441,15 +441,10 @@
       </h2>
 
       <record-flags fields="administrator, applicant, interpreter" param/>
-
-      <a action="edit" if="&can_edit?" param="edit-link">
-        <ht key="user.actions.edit" name="#{name(:no_wrapper => true)}">
-          Edit User
-        </ht>
-      </a>
     </content-header:>
 
     <content-body: param>
+      <view:profile param="description" />
       <field-list fields="email_address, state" param/>
     </content-body:>
 
@@ -522,22 +517,22 @@
   </page>
 </def>
 
-<def tag="activate-page" polymorphic/>
-<def tag="activate-page" for="User">
-  <page title="#{ht 'user.activate.title', :default=>['Activate']}" merge>
+<def tag="be-administrator-page" polymorphic/>
+<def tag="be-administrator-page" for="User">
+  <page title="#{ht 'user.be_administrator.title', :default=>['Be Administrator']}" merge>
 
-    <body: class="lifecycle-transition-page activate-page" param/>
+    <body: class="lifecycle-transition-page be-administrator-page" param/>
 
     <content-header: param>
       <h2 param="heading">
-        <ht key="user.activate.heading">
-          Activate
+        <ht key="user.be_administrator.heading">
+          Be Administrator
         </ht>
       </h2>
     </content-header:>
 
     <content-body: param>
-      <activate-form param="form"/>
+      <be-administrator-form param="form"/>
     </content-body:>
 
   </page>
@@ -580,6 +575,48 @@
 
     <content-body: param>
       <be-applicant-form param="form"/>
+    </content-body:>
+
+  </page>
+</def>
+
+<def tag="mark-as-inactive-page" polymorphic/>
+<def tag="mark-as-inactive-page" for="User">
+  <page title="#{ht 'user.mark_as_inactive.title', :default=>['Mark As Inactive']}" merge>
+
+    <body: class="lifecycle-transition-page mark-as-inactive-page" param/>
+
+    <content-header: param>
+      <h2 param="heading">
+        <ht key="user.mark_as_inactive.heading">
+          Mark As Inactive
+        </ht>
+      </h2>
+    </content-header:>
+
+    <content-body: param>
+      <mark-as-inactive-form param="form"/>
+    </content-body:>
+
+  </page>
+</def>
+
+<def tag="mark-as-active-page" polymorphic/>
+<def tag="mark-as-active-page" for="User">
+  <page title="#{ht 'user.mark_as_active.title', :default=>['Mark As Active']}" merge>
+
+    <body: class="lifecycle-transition-page mark-as-active-page" param/>
+
+    <content-header: param>
+      <h2 param="heading">
+        <ht key="user.mark_as_active.heading">
+          Mark As Active
+        </ht>
+      </h2>
+    </content-header:>
+
+    <content-body: param>
+      <mark-as-active-form param="form"/>
     </content-body:>
 
   </page>
