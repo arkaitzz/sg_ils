@@ -1,70 +1,20 @@
-<page title="Main menu">
+<include src='main_menu_lib'/>
 
-  <body: class="front-page"/>
+<page title="#{I18n.t 'user.main_menu.heading'}">
+
+  <body: class='front-page'/>
 
   <content:>
-    <header class="content-header hero-unit">
-      <h1>Bienvenido <%= @user.name%> a <app-name/></h1>
-      <section class="welcome-message">
-        <h3>Congratulations! Your Hobo Rails App is up and running</h3>
-
-        <div class="row">
-          <span class="label label-success">Applicant actions</span>
-            <div class="row">
-              <div class="span3"><a href="#{new_request_creation_path}"><button class="w3-btn w3-indigo">Nueva peticion</button></a></div>
-              <div class="span3"><a href="#{my_requests_path}"><button class="w3-btn w3-blue">Editar peticiones</button></a></div>
-              <div class="span3"><a href="/users/#{@user.id}/addresses/"><button class="w3-btn w3-deep-purple">Mi libreta de direcciones</button></a></div>
-              <div class="span2"><a href="/users/#{@user.id}/edit"><button class="w3-btn w3-light-blue">Editar perfil</button></a></div>
-            </div>
-            <span class="label label-success">Interprete actions</span>
-            <div class="row">
-              <div class="span4"><button class="w3-btn w3-cyan">Ver mi calendario</button></div>
-              <div class="span4"><a href="/unassigned"><button class="w3-btn w3-aqua">Asignarme/Ver/Buscar peticiones</button></a></div>
-              <div class="span3"><button class="w3-btn w3-teal">Completar peticiones</button></div>
-
-            </div>
-            <span class="label label-success">Admin Actions</span>
-            <div class="row">
-              <div class="span3"><a href="/role"><button class="w3-btn w3-green">Upgrade someone to Interpreter</button></a></div>
-              <div class="span4"><a href="/users"><button class="w3-btn w3-light-green">Ver todos los usuarios</button></a></div>
-              <div class="span4"><a href="/requests"><button class="w3-btn w3-lime">Ver peticiones</button></a></div>
-              <div class="span11"><a href="/global"><button class="w3-btn w3-khaki">Ver calendario global</button></a></div>
-            </div>
-        </div>
-
-<!--        <br/><br/><br/>-->
-<!--        PALETA DE COLORES-->
-<!--        <p><button class="w3-btn w3-red">Red</button></p>-->
-<!--        <p><button class="w3-btn w3-pink">Pink</button></p>-->
-<!--        <p><button class="w3-btn w3-purple">Purple</button></p>-->
-<!--        <p><button class="w3-btn w3-deep-purple">Deep Purple</button></p>-->
-<!--        <p><button class="w3-btn w3-indigo">Indigo</button></p>-->
-<!--        <p><button class="w3-btn w3-blue">Blue</button></p>-->
-<!--        <p><button class="w3-btn w3-light-blue">Light Blue</button></p>-->
-<!--        <p><button class="w3-btn w3-cyan">Cyan</button></p>-->
-<!--        <p><button class="w3-btn w3-aqua">Aqua</button></p>-->
-<!--        <p><button class="w3-btn w3-teal">Teal</button></p>-->
-<!--        <p><button class="w3-btn w3-green">Green</button></p>-->
-<!--        <p><button class="w3-btn w3-light-green">Light Green</button></p>-->
-<!--        <p><button class="w3-btn w3-lime">Lime</button></p>-->
-<!--        <p><button class="w3-btn w3-sand">Sand</button></p>-->
-<!--        <p><button class="w3-btn w3-khaki">Khaki</button></p>-->
-<!--        <p><button class="w3-btn w3-yellow">Yellow</button></p>-->
-<!--        <p><button class="w3-btn w3-amber">Amber</button></p>-->
-<!--        <p><button class="w3-btn w3-orange">Orange</button></p>-->
-<!--        <p><button class="w3-btn w3-deep-orange">Deep Orange</button></p>-->
-<!--        <p><button class="w3-btn w3-brown">Brown</button></p>-->
-<!--        <p><button class="w3-btn w3-blue-grey">Blue Grey</button></p>-->
-<!--        <p><button class="w3-btn w3-light-grey">Light Grey</button></p>-->
-<!--        <p><button class="w3-btn w3-grey">Grey</button></p>-->
-<!--        <p><button class="w3-btn w3-dark-grey">Dark Grey</button></p>-->
-<!--        <p><button class="w3-btn w3-black">Black</button></p>-->
-
+    <header class='content-header'>
+      <section class='welcome-message'>
+        <h3><t key='user.main_menu.welcome' name='&@user.name'/></h3>
       </section>
     </header>
 
-    <section class="content-body">
+    <section class='content-body'>
+      <call-tag tag="#{@user.profile}-menu"/>
     </section>
   </content:>
 
 </page>
+

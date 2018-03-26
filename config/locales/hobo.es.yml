@@ -53,62 +53,65 @@ es:
       password: "Contraseña"
       remember_me: "Recuerda mis datos"
       login: "Identificación"
-      signup: "Registro"
+      signup: Registro
       forgot_password: &forgot_password "¿Contraseña olvidada?"
 
     signup:
-      title: "Registro"
-      heading: "Registrar nuevo usuario"
+      title: Registro
+      heading: Registrar nuevo usuario
+      already: Ya tengo una cuenta
 
     forgot_password:
       title: *forgot_password
       heading: *forgot_password
-      text: "Introduzca la dirección de correo electrónico mediante la cual se registró. Le enviaremos un correo con instrucciones para generar una nueva contraseña."
-             
-             
+      text: Introduce la dirección de correo electrónico mediante la cual te registraste. Te enviaremos un correo con instrucciones para generar una nueva contraseña.
       email_address: *email_address
-      send: "Enviar nueva contraseña"
+      send: Enviar nueva contraseña
 
     forgot_password_sent:
-      title: "Contraseña olvidada - Correo eléctronico enviado"
-      heading: "Contraseña olvidada - Correo eléctronico enviado"
-      text: "El mensaje con las instrucciones para generar una nueva contraseña ha sido enviado a %{email_address}
-             Si no lo recibe, por favor verifique el filtro anti-spam."
+      title: Contraseña olvidada - Correo eléctronico enviado
+      heading: Contraseña olvidada - Correo eléctronico enviado
+      text: 'El mensaje con las instrucciones para generar una nueva contraseña ha sido enviado a <strong>%{email_address}</strong>. Si no lo localizas en tu Bandeja de entrada, por favor verifica el filtro anti-spam.'
+
+    forgot_password_no_user:
+      title: Contraseña olvidada - No existe el usuario
+      heading: Contraseña olvidada - No existe el usuario
+      text: "No existe ningún usuario con esta dirección de correo electrónico. <a href='/forgot_password' title='Volver a Contraseña olvidada'>¿Quieres volverlo a intentar?</a>."
 
     account_disabled_page:
-      title: "Cuenta desactivada"
-      heading: "Cuenta desactivada"
-      text: "Su cuenta está desactivada en este momento."
+      title: Contraseña olvidada - Cuenta desactivada
+      heading: Contraseña olvidada - Cuenta desactivada
+      text: 'Tu cuenta todavía no está activada: si te has registrado hace poco por favor <strong>espera 24 horas</strong> al menos para que podamos activarla. Si ya ha pasado ese intervalo de tiempo, puedes <strong>ponerte en contacto con <a href="http://euskal-gorrak.org/" title="Sitio web de Euskalgorrak">Euskalgorrak</a></strong> para solicitar mas información.'
 
     account_page:
-      title: "Tu perfil"
-      heading: "Tu perfil"
-      new_password: "Nueva contraseña"
-      confirm_new_password: "Confirmación nueva contraseña"
+      title: Tu perfil
+      heading: Tu perfil
+      new_password: Nueva contraseña
+      confirm_new_password: Confirmación nueva contraseña
 
     # default hobo action translation
     actions:
       new: "Nuevo registro de %{model}"
       create: "Crear %{model}"
-      previous: "Anterior"
-      next: "Siguiente"
-      add: "Añadir"
+      previous: Anterior
+      next: Siguiente
+      add: Añadir
       show_all: "Muestra todos %{model}..."
       delete: "Borrar %{model}"
       save: "Guardar %{model}"
-      cancel: "Cancelar"
+      cancel: Cancelar
       edit: "Actualizar %{model}"
-      edit_control: "Actualizar"
-      back: "Volver a"
+      edit_control: Actualizar
+      back: Volver a
       back_to_parent: "Volver a %{parent} %{name}"
-      send: "Enviar"
-      remove: "Eliminar"
-      signup: "Registro"
-      login: "Iniciar Sesión"
-      logout: "Terminar Sesión"
+      send: Enviar
+      remove: Eliminar
+      signup: Registro
+      login: Iniciar sesión
+      logout: Terminar sesión
       logged_in_as: "%{name}"
-      account: "Perfil"
-      save_account: "Guarda tu perfil"
+      account: Perfil
+      save_account: Guarda tu perfil
 
     # default hobo message translation
     messages:
@@ -116,7 +119,7 @@ es:
         success: "La creación de %{model} ha sido exitosa"
         error: "La creación de %{model} no ha sido exitosa.\n%{errors}"
       creator:
-        error: "El creator %{name} no se pudo executar.\n%{errors}"
+        error: "El creador %{name} no se pudo ejecutar.\n%{errors}"
       transition:
         error: "La transición %{name} no se pudo ejecutar.\n%{errors}"
       update:
@@ -127,10 +130,10 @@ es:
         success: "La eliminación de %{model} ha sido tenido éxito."
       signup:
         success: "¡Gracias por registrarte!"
-        must_activate: "Tiene que activar la cuenta antes de iniciar la sesión. Por favor verifique su correo eléctronico."
+        must_activate: "Tieneis que activar la cuenta antes de iniciar la sesión. Por favor verifica tu correo eléctronico."
       login:
-        success: "Ha iniciado la sesión."
-        error: "¡No se ingresaron %{login} y Contraseña válidos!"
+        success: "Has iniciado la sesión."
+        error: "No has tecleado %{login} y contraseña correctos"
       logout: "La sesión ha terminado."
       reset_password: "Tu contraseña ha sido reiniciada."
       permission_denied: "¡Permiso denegado!"
@@ -138,10 +141,10 @@ es:
       unauthenticated: "No se pudo autenticar."
       validate_password: "debe contener al menos 6 caracteres, letras mayúsculas y minúsculas"
       current_password_is_not_correct: "no está correcta"
-      you_are_site_admin: "Ahora usted es el administrador del sitio."
-      you_signed_up: "Usted se registró."
+      you_are_site_admin: "Ahora eres el administrador del sitio."
+      you_signed_up: "Te has registrado."
       none: "No hay %{model} disponibles."
-      confirm: "¿Está seguro?"
+      confirm: "¿Estás seguro?"
 
     # default hobo collection translation
     collection:
@@ -179,7 +182,7 @@ es:
 
     live_search:
       label: "Buscar"
-      results_label: "Buscar Resultados"
+      results_label: "Buscar resultados"
       close_button: "cerrar"
       no_results: "No se encuentran resultados."
 
@@ -198,7 +201,7 @@ es:
     password_hidden: "[contraseña]"
 
     in_place_editor:
-      click_to_edit: "(haga clic para editar)"
+      click_to_edit: "(haz clic para editar)"
 
     select_one_editor:
       blank_message: *no_model

@@ -1,7 +1,10 @@
 eu:
+  nav_item:
+    home: Hasiera
+    home_title: Hasierara itzuli
   home: Hasiera
   welcome: 
-    header: "Kaixo, hay %{name} da"
+    header: "Kaixo, hau %{name} da"
     msg-00: "ZHIK <a href='http://euskal-gorrak.org' title='Euskalgorrak web gunea'>Euskalgorrak</a> kudeatutako, EuskalHerriko Zeinu Hizkuntza Interprete zerbitzuaren Kudeaketa sistema da."
     msg-10: '%{name}en zera egin dezakezu:'
     msg-20: Utilizar el servicio de Intérpretes de Lengua de Signos gratuito para todas las personas sordas del País Vasco.

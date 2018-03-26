@@ -2,9 +2,7 @@ class UsersController < ApplicationController
 
   hobo_user_controller
 
-  auto_actions :all, :except => [:index, :new, :create]
-
-  before_filter :set_user, :only => [:main_menu, :role_set]
+  auto_actions :all, :except => [:index, :new, :create, :edit]
 
   # Normally, users should be created via the user lifecycle, except
   #  for the initial user created via the form on the front screen on
@@ -20,29 +18,55 @@ class UsersController < ApplicationController
     end
   end
 
+  def show
+    @user = User.find(params[:id])
+    @user.viewable_by?(current_user) ? hobo_show : redirect_to('/menu') 
+  end
+
+  def do_signup
+    hobo_create do
+      if valid?
+        UserMailer.new_user(this).deliver
+        flash[:notice] = t('user.actions.signup_completed')
+        redirect_to home_page
+      end
+    end
+  end
+
+  def forgot_password
+    if request.post?
+      user = model.find_by_email_address(params[:email_address].to_s)
+      if !user.blank?
+        if user.state == 'active'
+          user.lifecycle.request_password_reset!(:nobody)
+          render :forgot_password_email_sent
+        else
+          render :account_disabled
+        end
+      else
+        render :forgot_password_no_user
+      end
+    end
+  end
+
   def main_menu
-    # Set user
-    @user_type = current_user.user_type
+    if current_user.guest?
+      flash[:error] = t('user_forbidden')
+      redirect_to home_page
+    end
+    @user = current_user
   end
 
   def role_set
     if !current_user.administrator?
-      flash[:notice] = I18n.t('user_forbidden')
-      redirect_to '/'
+      flash[:notice] = t('user_forbidden')
+      redirect_to home_page
     end
     # Set user
-    @user = User.all
-    @applicants = User.all.applicant
-    @interpreters = User.all.interpreter
+    @user = User.find_each
+    @applicants = User.applicant.find_each
+    @interpreters = User.interpreter.find_each
     hobo_ajax_response if request.xhr?
-  end
-
-  protected
-
-  def set_user
-    # If user is a Guest, redirect to front page
-    redirect_to '/' if current_user.class != User
-    @user = current_user
   end
 
 end

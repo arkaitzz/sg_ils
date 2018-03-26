@@ -1,0 +1,19 @@
+Estimado <%= @user %>,
+<br/><br/>
+Te has inscrito correctamente en <%= @app_name %>.
+<br/><br/>
+Tu usuario no estará activo hasta que sea revisado por los responsables del servicio.
+<br/><br/>
+Una vez tu usuario sea activado, puedes acceder a la plataforma tecleando tu correo electrónico:
+<br/><br/>
+  <%= @user.email_address %> 
+<br/><br/>
+y la contraseña que has elegido durante el proceso de alta.
+<br/><br/>
+Para cualquier pregunta o comentario puedes contactar con nosotros en <a href='http://euskal-gorrak.org' title='Sitio web de Euskalgorrak'>http://euskal-gorrak.org</a>
+<br/><br/>
+Gracias,
+<br/><br/>
+El equipo de <%= @app_name %>.
+<br/><br/>
+<%= image_tag attachments['logo_email_html.png'].url %>

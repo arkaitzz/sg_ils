@@ -8,7 +8,6 @@
     <nav-item href="#{base_url}/">Home</nav-item>
     <nav-item with="&Address"><ht key="address.nav_item" count="100"><model-name-human count="100"/></ht></nav-item>
     <nav-item with="&Request"><ht key="request.nav_item" count="100"><model-name-human count="100"/></ht></nav-item>
-    <nav-item with="&User"><ht key="user.nav_item" count="100"><model-name-human count="100"/></ht></nav-item>
   </navigation>
 </def>
 
@@ -442,15 +441,10 @@
       </h2>
 
       <record-flags fields="administrator, applicant, interpreter" param/>
-
-      <a action="edit" if="&can_edit?" param="edit-link">
-        <ht key="user.actions.edit" name="#{name(:no_wrapper => true)}">
-          Edit User
-        </ht>
-      </a>
     </content-header:>
 
     <content-body: param>
+      <view:profile param="description" />
       <field-list fields="email_address, state" param/>
     </content-body:>
 
@@ -502,22 +496,43 @@
   </page>
 </def>
 
-<def tag="activate-page" polymorphic/>
-<def tag="activate-page" for="User">
-  <page title="#{ht 'user.activate.title', :default=>['Activate']}" merge>
+<def tag="reset-password-page" polymorphic/>
+<def tag="reset-password-page" for="User">
+  <page title="#{ht 'user.reset_password.title', :default=>['Reset Password']}" merge>
 
-    <body: class="lifecycle-transition-page activate-page" param/>
+    <body: class="lifecycle-transition-page reset-password-page" param/>
 
     <content-header: param>
       <h2 param="heading">
-        <ht key="user.activate.heading">
-          Activate
+        <ht key="user.reset_password.heading">
+          Reset Password
         </ht>
       </h2>
     </content-header:>
 
     <content-body: param>
-      <activate-form param="form"/>
+      <reset-password-form param="form"/>
+    </content-body:>
+
+  </page>
+</def>
+
+<def tag="be-administrator-page" polymorphic/>
+<def tag="be-administrator-page" for="User">
+  <page title="#{ht 'user.be_administrator.title', :default=>['Be Administrator']}" merge>
+
+    <body: class="lifecycle-transition-page be-administrator-page" param/>
+
+    <content-header: param>
+      <h2 param="heading">
+        <ht key="user.be_administrator.heading">
+          Be Administrator
+        </ht>
+      </h2>
+    </content-header:>
+
+    <content-body: param>
+      <be-administrator-form param="form"/>
     </content-body:>
 
   </page>
@@ -565,22 +580,43 @@
   </page>
 </def>
 
-<def tag="reset-password-page" polymorphic/>
-<def tag="reset-password-page" for="User">
-  <page title="#{ht 'user.reset_password.title', :default=>['Reset Password']}" merge>
+<def tag="mark-as-inactive-page" polymorphic/>
+<def tag="mark-as-inactive-page" for="User">
+  <page title="#{ht 'user.mark_as_inactive.title', :default=>['Mark As Inactive']}" merge>
 
-    <body: class="lifecycle-transition-page reset-password-page" param/>
+    <body: class="lifecycle-transition-page mark-as-inactive-page" param/>
 
     <content-header: param>
       <h2 param="heading">
-        <ht key="user.reset_password.heading">
-          Reset Password
+        <ht key="user.mark_as_inactive.heading">
+          Mark As Inactive
         </ht>
       </h2>
     </content-header:>
 
     <content-body: param>
-      <reset-password-form param="form"/>
+      <mark-as-inactive-form param="form"/>
+    </content-body:>
+
+  </page>
+</def>
+
+<def tag="mark-as-active-page" polymorphic/>
+<def tag="mark-as-active-page" for="User">
+  <page title="#{ht 'user.mark_as_active.title', :default=>['Mark As Active']}" merge>
+
+    <body: class="lifecycle-transition-page mark-as-active-page" param/>
+
+    <content-header: param>
+      <h2 param="heading">
+        <ht key="user.mark_as_active.heading">
+          Mark As Active
+        </ht>
+      </h2>
+    </content-header:>
+
+    <content-body: param>
+      <mark-as-active-form param="form"/>
     </content-body:>
 
   </page>

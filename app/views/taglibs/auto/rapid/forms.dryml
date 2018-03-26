@@ -28,7 +28,7 @@
 <def tag="form" for="User">
   <form merge param="default">
     <error-messages param/>
-    <field-list fields="name, email_address, administrator, applicant, interpreter, state" param/>
+    <field-list fields="name, email_address, administrator, interpreter, applicant, state" param/>
     <div param="actions">
       <submit label="#{ht 'user.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
     </div>
@@ -46,14 +46,25 @@
   </form>
 </def>
 
-<def tag="activate-form" polymorphic/>
-<def tag="activate-form" for="User">
-  <form lifecycle="activate" merge param="default">
+<def tag="reset-password-form" polymorphic/>
+<def tag="reset-password-form" for="User">
+  <form lifecycle="reset_password" merge param="default">
+    <error-messages param/>
+    <input type="hidden" name="key" value="&this.lifecycle.provided_key" if="&this.lifecycle.provided_key"/>
+    <field-list fields="password, password_confirmation" param/>
+    <div param="actions">
+      <submit label="#{t 'activerecord.attributes.user.lifecycle.transitions.reset_password', :default=>['Reset Password']}" param/><or-cancel param="cancel"/>
+    </div>
+  </form>
+</def>
+<def tag="be-administrator-form" polymorphic/>
+<def tag="be-administrator-form" for="User">
+  <form lifecycle="be_administrator" merge param="default">
     <error-messages param/>
     <input type="hidden" name="key" value="&this.lifecycle.provided_key" if="&this.lifecycle.provided_key"/>
     <field-list fields="" param/>
     <div param="actions">
-      <submit label="#{t 'activerecord.attributes.user.lifecycle.transitions.activate', :default=>['Activate']}" param/><or-cancel param="cancel"/>
+      <submit label="#{t 'activerecord.attributes.user.lifecycle.transitions.be_administrator', :default=>['Be Administrator']}" param/><or-cancel param="cancel"/>
     </div>
   </form>
 </def>
@@ -79,14 +90,25 @@
     </div>
   </form>
 </def>
-<def tag="reset-password-form" polymorphic/>
-<def tag="reset-password-form" for="User">
-  <form lifecycle="reset_password" merge param="default">
+<def tag="mark-as-inactive-form" polymorphic/>
+<def tag="mark-as-inactive-form" for="User">
+  <form lifecycle="mark_as_inactive" merge param="default">
     <error-messages param/>
     <input type="hidden" name="key" value="&this.lifecycle.provided_key" if="&this.lifecycle.provided_key"/>
-    <field-list fields="password, password_confirmation" param/>
+    <field-list fields="" param/>
     <div param="actions">
-      <submit label="#{t 'activerecord.attributes.user.lifecycle.transitions.reset_password', :default=>['Reset Password']}" param/><or-cancel param="cancel"/>
+      <submit label="#{t 'activerecord.attributes.user.lifecycle.transitions.mark_as_inactive', :default=>['Mark As Inactive']}" param/><or-cancel param="cancel"/>
+    </div>
+  </form>
+</def>
+<def tag="mark-as-active-form" polymorphic/>
+<def tag="mark-as-active-form" for="User">
+  <form lifecycle="mark_as_active" merge param="default">
+    <error-messages param/>
+    <input type="hidden" name="key" value="&this.lifecycle.provided_key" if="&this.lifecycle.provided_key"/>
+    <field-list fields="" param/>
+    <div param="actions">
+      <submit label="#{t 'activerecord.attributes.user.lifecycle.transitions.mark_as_active', :default=>['Mark As Active']}" param/><or-cancel param="cancel"/>
     </div>
   </form>
 </def>

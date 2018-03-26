@@ -1,0 +1,17 @@
+<signup-page>
+  <content: replace>
+    <div class='row'>
+      <div class='span3'>&nbsp;</div>
+      <div class='span6'>
+        <section class='well' style='padding:50px 50px 10px 50px;'>
+          <h2><t key='hobo.signup.heading'>Signup</t></h2>
+          <signup-form>
+            <submit:/>
+            <cancel: replace> <t key='hobo.support.or'/> <a href='/login'><t key='hobo.signup.already'/></a></cancel:>
+          </signup-form>
+        </section>
+      </div>
+      <div class='span3'>&nbsp;</div>
+    </div>
+  </content:>
+</signup-page>

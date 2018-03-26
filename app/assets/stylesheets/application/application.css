@@ -2,6 +2,12 @@
 .app-name a.brand {background-image: url("/assets/logo_mini.png");height: 43px;margin: 0 20px 0 0;padding: 0;text-indent: -9999px;width: 43px;}
 .navbar .nav > .active > a, .navbar .nav > .active > a:hover, .navbar .nav > .active > a:focus{height:28px}
 
+h3 span.label{margin-right:10px}
+
 /* Review-step 1,2,3 steps divs*/
 div.section.content-body.review-step div.row div {padding: 10px;border-radius: 10px;text-align: center;}
 div.section.content-body.my-requests div.table-plus div.header{display:none;} /* Hide the search bar of table-plus*/
+
+/* Footer */
+div.footer div.authors ul{list-style:none;margin-left:0}
+a#ubuntu-footer{background: transparent url('/img/ubuntu-logo.png') no-repeat scroll left center;padding-left:1.5em}
