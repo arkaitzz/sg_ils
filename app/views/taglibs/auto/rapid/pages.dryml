@@ -124,7 +124,7 @@
 
 <def tag="index-for-user-page" polymorphic/>
 <def tag="index-for-user-page" for="Address">
-  <page merge title="#{ht 'address.index_for_owner.title', :count=>100, :default=>['Address for']} #{name :with => @user, :no_wrapper => true}">
+  <page merge title="#{ht 'address.index_for_owner.title', :count=>100, :default=>['Addresses for']} #{name :with => @user, :no_wrapper => true}">
     <body: class="index-for-owner-page user address" param/>
     <content-header: param>
       <div param="back-to">
@@ -300,7 +300,7 @@
 
 <def tag="index-for-user-page" polymorphic/>
 <def tag="index-for-user-page" for="Request">
-  <page merge title="#{ht 'request.index_for_owner.title', :count=>100, :default=>['Request for']} #{name :with => @user, :no_wrapper => true}">
+  <page merge title="#{ht 'request.index_for_owner.title', :count=>100, :default=>['Requests for']} #{name :with => @user, :no_wrapper => true}">
     <body: class="index-for-owner-page user request" param/>
     <content-header: param>
       <div param="back-to">

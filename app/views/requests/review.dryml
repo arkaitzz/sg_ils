@@ -14,32 +14,32 @@
 
     <section class='content-body review-step'>
       <div class='row'>
-          <div class='span3 w3-cyan w3-btn-like'>
-            <h5><t key='request.step1.description'/></h5>
-            <%= I18n.l(@request.start_time, format: :zhik_review) %>
-            <br/><br/>
-            <%= link_to request_step1_path(@request.id), :title => I18n.t('request.step1.go_back'), :class => 'review-link' do %>
-              <t key='request.step1.go_back'/>
-            <% end %>
-          </div>
-          <div class='span4 w3-light-blue w3-btn-like'>
-            <h5><t key='request.step2.description'/></h5>
-            <%= @request.place.to_s %>
-            <br/><br/>
-            <%= link_to request_step2_path(@request.id), :title => I18n.t('request.step2.go_back'), :class => 'review-link' do %>
-              <t key='request.step2.go_back'/>
-            <% end %>
-          </div>
-          <div class='span4 w3-aqua w3-btn-like'>
-            <h5><t key='request.step3.description'/></h5>
-            <%= @request.duration.to_s %> h.
-            <br/>
-            <%= @request.observations.to_s %>
-            <br/><br/>
-            <%= link_to request_step3_path(@request.id), :title => I18n.t('request.step3.go_back'), :class => 'review-link' do %>
-              <t key='request.step3.go_back'/>
-            <% end %>
-          </div>
+        <div class='span3 w3-cyan w3-btn-like'>
+          <h5><t key='request.step1.description'/></h5>
+          <%= I18n.l(@request.start_time, format: :zhik_review) %>
+          <br/><br/>
+          <%= link_to request_step1_path(@request.id), :title => I18n.t('request.step1.go_back'), :class => 'review-link' do %>
+            <t key='request.step1.go_back'/>
+          <% end %>
+        </div>
+        <div class='span4 w3-light-blue w3-btn-like'>
+          <h5><t key='request.step2.description'/></h5>
+          <%= @request.place.to_s %>
+          <br/><br/>
+          <%= link_to request_step2_path(@request.id), :title => I18n.t('request.step2.go_back'), :class => 'review-link' do %>
+            <t key='request.step2.go_back'/>
+          <% end %>
+        </div>
+        <div class='span4 w3-aqua w3-btn-like'>
+          <h5><t key='request.step3.description'/></h5>
+          <%= @request.duration.to_s %> <t key='activerecord.attributes.request.start_time_append'/>
+          <br/>
+          <%= @request.observations.to_s %>
+          <br/><br/>
+          <%= link_to request_step3_path(@request.id), :title => I18n.t('request.step3.go_back'), :class => 'review-link' do %>
+            <t key='request.step3.go_back'/>
+          <% end %>
+        </div>
       </div>
 
       <%= form_for :request, :url => request_confirm_path(@request.id), :method => 'post' do |f| %>

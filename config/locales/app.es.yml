@@ -58,18 +58,22 @@ es:
      formats:
        zhik: '%d/%m/%Y %H:%M'
        zhik_review: '%A %d de %B a las %H:%M'
+       timestamps_for_collection: '%d/%m/%Y'
 
   request:
     applicant: 'Solicitante: %{name}'
     error_pre_steps_creation: 'Error 101: por favor contacta con Euskalgorrak para tratar de resolver este error.'
     total_steps: 3
     go_back: Volver al paso anterior
+    index_for_user:
+      title: Mis solicitudes
+      header: Mis solicitudes
     review:
       header: Revisa y confirma
       title: Revisión
     confirm: 
       submit: La información es correcta y confirmo que quiero solicitar el servicio
-      success: La solicitud se ha procesado correctamente. Puede consultar su estado en <a href='/my_requests' title='Ir a Mis solicitudes'>Mis solicitudes</a>
+      success: "La solicitud se ha procesado correctamente. Puede consultar su estado en <a href='/users/%{id}/requests' title='Ir a Mis solicitudes'>Mis solicitudes</a>"
     new:
       title: Nueva solicitud
     step1:
@@ -131,6 +135,9 @@ es:
       user:
         one: Usuario
         other: Usuarios
+      request:
+        one: Solicitud
+        other: Solicitudes
     attributes:
       user:
         name: Nombre
@@ -152,7 +159,19 @@ es:
             be_applicant: Convertir a Solicitante
             mark_as_active: Activar Usuario
             mark_as_inactive: Desactivar Usuario
+      request:
+        place: Lugar
+        start_time: Día y hora
+        start_time_append: h.
+        duration: Duración estimada
+        observations: Observaciones
+        created_at: Creada el
     attribute_help:
+      request:
+        place: ¿Donde va a ser?
+        start_time: ¿Cuando va a ser?
+        duration: ¿Cuanto va a durar?
+        observations: Escribe aquí tus observaciones
       user:
         lifecycle:
           transitions:

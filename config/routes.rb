@@ -17,7 +17,4 @@ ZHIK::Application.routes.draw do
   match 'step3/:request_id' => 'requests#step3', :as => 'request_step3', via: [:get, :post]
   post 'request_review/:request_id' => 'requests#review', :as => 'request_review'
   post 'confirm_review/:request_id' => 'requests#confirm', :as => 'request_confirm'
-
-  # User requests
-  get 'my_requests' => 'requests#my_requests', :as => 'my_requests'
 end

@@ -7,7 +7,11 @@ class RequestsController < ApplicationController
 
   def pre_steps_creation
     @request = current_user.requests.new
-    @request.save ? redirect_to request_step1_path(@request.id) : redirect_to '/', flash: { :error => I18n.t('request.error_pre_steps_creation') }
+    if @request.save
+      redirect_to request_step1_path(@request.id)
+    else
+      redirect_to '/', flash: { :error => I18n.t('request.error_pre_steps_creation') }
+    end
   end
 
   # TODO: on each step we must deny the modification of a confirmed request.
@@ -44,11 +48,15 @@ class RequestsController < ApplicationController
     # TODO: Here (state changes from pending -> confirmed)
     # TODO: Once its confirmed, do we notify by email to interpreters and the applicant?
     @request.confirm_after_review
-    redirect_to '/', flash: { :notice => I18n.t('request.confirm.success').html_safe }
+    redirect_to '/', flash: { :notice => I18n.t('request.confirm.success', id: @request.user.id).html_safe }
   end
 
-  def my_requests
-    @requests = current_user.requests
+  def index_for_user
+    # TODO: show past requests, not yet accepted ones and accepted ones
+    user = User.find(params[:user_id])
+    params[:sort] = 'start_time' if params[:sort].blank?
+    @requests = Request.apply_scopes(:user_is => user, :confirmed => true).order_by( parse_sort_param(:start_time) ).paginate(:page => params[:page], :per_page => 2)
+    hobo_index_for :user
   end
 
   def unassigned
