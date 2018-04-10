@@ -1,28 +1,66 @@
-<page title="Step1">
+<page title="#{I18n.t('request.new.title') + '-' + I18n.t('request.step1.current')}">
 
-  <body: class="front-page"/>
+  <append-scripts:>
+    <script type='text/javascript'>
+      jQuery(document).ready(function() {
+        // DateTime setup
+        var date_selector = jQuery('#date-selector');
+        var hour_selector = jQuery('#hour-selector');
+        date_selector.datepicker();
+        date_selector.on('changeDate', function() {
+          jQuery('#request_start_time').val(
+            [date_selector.datepicker('getFormattedDate'), hour_selector.val()].join(' ')
+          );
+        });
+        hour_selector.on('change', function() {
+          jQuery('#request_start_time').val(
+            [date_selector.datepicker('getFormattedDate'), hour_selector.val()].join(' ')
+          );
+        });
+      })
+    </script>
+  </append-scripts:>
+
+  <body: class='front-page'/>
 
   <content:>
-    <header class="content-header">
-      <h1>Nueva solicitud de servicio (1/3)</h1>
-      <h3>Usuario: #{current_user.name}</h3>
-      <h3>Step 1/3</h3>
+    <header class='content-header'>
+      <section class='welcome-message'>
+        <h3>
+          <t key='request.step1.header'/>
+          <span class='label label-info margin-left'>
+            <t key='request.step1.current'/> <t key='support.out_of'/> <t key='request.total_steps'/>
+          </span>
+        </h3>
+        <h4><t key='request.applicant' name='&current_user.name'/></h4>
+      </section>
     </header>
-    <section class="content-body">
 
-    <%= form_for :request, :url => request_step2_path(@request.id), :method => "get" do |f| %>
-
-      <%= f.label :start_time %>
-      <%= f.datetime_select :start_time %>
-
-      <br/>
-
-        <%= f.submit "Step2 ⟶", :class => "btn btn-primary button submit-button" %>
-    <% end %>
-
+    <section class='content-body'>
+      <%= form_for :request, :url => request_step2_path(@request.id), :method => 'post' do |f| %>
+        <% temp = @request.start_time.nil? ? I18n.l(Time.now, format: :zhik) : I18n.l(@request.start_time, format: :zhik) %>
+        <input type='hidden' name='request[start_time]' id='request_start_time' value='&temp'/>
+        <span style='vertical-align:super'><t key='request.step1.tip'/>: </span>
+        <input type='text' id='date-selector' class='input-small'
+          data-date='&Date.today.to_s' 
+          data-date-language='es' 
+          data-date-days-of-week-disabled='0,6' 
+          data-date-start-date='0d'
+          data-date-end-date='+1m'
+          data-date-today-highlight='true'
+          data-date-autoclose='true'
+          value='&temp.split(" ")[0]'/>&nbsp;
+        <select-input 
+          id='hour-selector' 
+          class='input-small margin-left' 
+          options='&@hours'
+          selected='&temp.split(" ")[1]'/>
+        <div class='form-actions'>
+          <%= f.submit I18n.t('request.step1.next_step'), :class => 'btn btn-info' %> <or-cancel href='/'/>
+        </div>
+      <% end %>
     </section>
   </content:>
 
 </page>
-
 

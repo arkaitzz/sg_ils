@@ -9,6 +9,8 @@
 # please post it to http://hobousers.googlegroups.com. Thank you!
 
 es:
+  support:
+    out_of: de
   zhik:
     brand:
       footer:
@@ -54,9 +56,43 @@ es:
       - :year
   time:
      formats:
-       default: "%Y/%m/%d"
-       short: "%b %d"
-       long: "%B %d, %Y"
+       zhik: '%d/%m/%Y %H:%M'
+       zhik_review: '%A %d de %B a las %H:%M'
+
+  request:
+    applicant: 'Solicitante: %{name}'
+    error_pre_steps_creation: 'Error 101: por favor contacta con Euskalgorrak para tratar de resolver este error.'
+    total_steps: 3
+    go_back: Volver al paso anterior
+    review:
+      header: Revisa y confirma
+      title: Revisión
+    confirm: 
+      submit: La información es correcta y confirmo que quiero solicitar el servicio
+      success: La solicitud se ha procesado correctamente. Puede consultar su estado en <a href='/my_requests' title='Ir a Mis solicitudes'>Mis solicitudes</a>
+    new:
+      title: Nueva solicitud
+    step1:
+      header: Nueva solicitud
+      current: Paso 1
+      tip: Por favor, establece el día y la hora para la reserva del servicio
+      next_step: Siguiente paso
+      go_back: Volver al Paso 1
+      description: 'Paso 1: Día y hora'
+    step2:
+      header: Nueva solicitud
+      current: Paso 2
+      tip: Por favor, establece el lugar para la reserva del servicio
+      next_step: Siguiente paso
+      go_back: Volver al Paso 2
+      description: 'Paso 2: Lugar'
+    step3:
+      header: Nueva solicitud
+      current: Paso 3
+      tip: Por favor, establece la duración estimada y añade las observaciones que necesites
+      next_step: Revisar y confirmar
+      go_back: Volver al Paso 3
+      description: 'Paso 3: Duración y Observaciones'
 
   user:
     index:

@@ -1,31 +1,30 @@
-<page title="Step2">
+<page title="#{I18n.t('request.new.title') + '-' + I18n.t('request.step2.current')}">
 
-  <body: class="front-page"/>
+  <body: class='front-page'/>
 
   <content:>
-    <header class="content-header">
-      <h1>Nueva solicitud de servicio (2/3)</h1>
-      <h3>Usuario: #{current_user.name}</h3>
-      <h3>Step 2/3</h3>
+    <header class='content-header'>
+      <section class='welcome-message'>
+        <h3>
+          <t key='request.step2.header'/>
+          <span class='label label-info margin-left'>
+            <t key='request.step2.current'/> <t key='support.out_of'/> <t key='request.total_steps'/>
+          </span>
+        </h3>
+        <h4><t key='request.applicant' name='&current_user.name'/></h4>
+      </section>
     </header>
-    <section class="content-body">
 
-      <br/>
-
-      <%= form_for :request, :url => request_step3_path(@request.id), :method => "get" do |f| %>
-
-        <%= f.label :place %>
+    <section class='content-body'>
+      <%= form_for :request, :url => request_step3_path(@request.id), :method => 'post' do |f| %>
+        <span style='vertical-align:super'><t key='request.step2.tip'/>: </span>
         <%= f.text_field :place, class: 'form-control' %>
-      <br/>
-        <%= f.submit "⟵ Step1", :class => "btn btn-primary button submit-button", :formaction => request_step1_path(@request.id), :method => "get" %>
-        <%= f.submit "Step3 ⟶", :class => "btn btn-primary button submit-button" %>
-
-
+        <div class='form-actions'>
+          <%= f.submit I18n.t('request.step2.next_step'), :class => 'btn btn-info' %> <or-go-back href='/step1/#{@request.id}'/>
+        </div>
       <% end %>
-
     </section>
   </content:>
 
 </page>
-
 

@@ -133,3 +133,10 @@
     </div>
   </div>
 </def>
+
+<def tag='or-go-back'>
+  <if test='&linkable?'><t key='hobo.support.or'>or</t> <a merge-attrs><t key='request.go_back'/></a></if>
+  <else>
+  <if test='&linkable?(this.class)'><t key='hobo.support.or'>or</t> <a merge-attrs to='&this.class'><t key='request.go_back'/></a></if>
+  </else>
+</def>
