@@ -3,7 +3,7 @@ class RequestsController < ApplicationController
   hobo_model_controller
 
   auto_actions :all
-  auto_actions_for :user, [:index, :new, :create]
+  auto_actions_for :user, [:index]
 
   def pre_steps_creation
     @request = current_user.requests.new

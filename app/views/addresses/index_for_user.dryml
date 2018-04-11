@@ -1,0 +1,15 @@
+<index-for-user-page: without-new-link title='&I18n.t("address.index_for_user.title")'>
+  <content-header: replace>
+    <header class='content-header'>
+      <section class='welcome-message'>
+        <h3>
+          <t key='address.index_for_user.header'/>
+        </h3>
+        <h4><t key='address.applicant' name='&current_user.name'/></h4>
+      </section>
+    </header>
+  </content-header:>
+  <collection: replace>
+    Funcionalidad no implementada aún.
+  </collection:>
+</index-for-user-page:>
