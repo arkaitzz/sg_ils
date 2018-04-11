@@ -13,10 +13,10 @@ class Address < ActiveRecord::Base
   end
   attr_accessible :line1, :line2, :city, :state, :zip, :phone, :user, :user_id
 
+  # --- Relations --- #
   belongs_to :user
 
   # --- Permissions --- #
-
   def create_permitted?
     acting_user.administrator? || acting_user.applicant?
   end

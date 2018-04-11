@@ -1,34 +1,37 @@
-<page title="Step3">
+<page title="#{I18n.t('request.new.title') + '-' + I18n.t('request.step3.current')}">
 
-  <body: class="front-page"/>
+  <body: class='front-page'/>
 
   <content:>
-    <header class="content-header">
-      <h1>Nueva solicitud de servicio (3/3)</h1>
-      <h3>Usuario: #{current_user.name}</h3>
-      <h3>Step 3/3</h3>
+    <header class='content-header'>
+      <section class='welcome-message'>
+        <h3>
+          <t key='request.step3.header'/>
+          <span class='label label-info margin-left'>
+            <t key='request.step3.current'/> <t key='support.out_of'/> <t key='request.total_steps'/>
+          </span>
+        </h3>
+        <h4><t key='request.applicant' name='&current_user.name'/></h4>
+      </section>
     </header>
-    <section class="content-body">
 
-      <br/>
-
-      <%= form_for :request, :url => request_review_path(@request.id), :method => "get" do |f| %>
-
-        <%= f.label :duration %>
-        <%= f.number_field :duration, class: 'form-control' %>
-
-        <%= f.label :observations %>
-        <%= f.text_area :observations, class: 'form-control' %>
-      <br/>
-        <%= f.submit "⟵ Step2", :class => "btn btn-primary button submit-button", :formaction => request_step2_path(@request.id), :method => "get" %>
-        <%= f.submit "Finish ⟶", :class => "btn btn-primary button submit-button" %>
-
-
+    <section class='content-body'>
+      <%= form_for :request, :url => request_review_path(@request.id), :method => 'post' do |f| %>
+        <span style='vertical-align:super'><t key='request.step3.tip'/>: </span>
+        <select-input 
+          id='request_duration' 
+          class='input-small margin-left' 
+          name='request[duration]'
+          options='&@duration'
+          selected='&@request.duration'/>
+        <br/>
+        <%= f.text_area :observations, class: 'form-control span8', placeholder: 'Añade las observaciones que necesites' %>
+        <div class='form-actions'>
+          <%= f.submit I18n.t('request.step3.next_step'), :class => 'btn btn-success' %> <or-go-back href="#{request_step2_path(@request.id)}"/>
+        </div>
       <% end %>
-
     </section>
   </content:>
 
 </page>
-
 

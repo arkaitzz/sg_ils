@@ -226,18 +226,4 @@
 
       full_messages:
         format: "%{attribute} %{message}"
-    models:
-      request: Solicitud
-    attributes:
-      request:
-        place: Sitio
-        start_time: Dia y hora
-        duration: Duración estimada
-        Observations: Observaciones
-    attribute_help:
-      request:
-        place: ¿Donde va a ser?
-        start_time: ¿Cuando va a ser?
-        duration: ¿Cuanto va a durar?
-        observations: Escribe aquí tus observaciones
 

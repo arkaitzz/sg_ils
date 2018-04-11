@@ -1,0 +1,38 @@
+<index-for-user-page: without-new-link title='&I18n.t("request.index_for_user.title")'>
+  <content-header: replace>
+    <header class='content-header'>
+      <section class='welcome-message'>
+        <h3>
+          <t key='request.index_for_user.header'/>
+        </h3>
+        <h4><t key='request.applicant' name='&current_user.name'/></h4>
+      </section>
+    </header>
+  </content-header:>
+  <collection: replace>
+    <table-plus fields='created_at, start_time, place, duration, observations'>
+      <header: replace/>
+      <duration-view:>
+        <this/> <t key='activerecord.attributes.request.start_time_append'/>
+      </duration-view:>
+      <start-time-view:>
+        <%= I18n.l(this, format: :zhik) %>
+      </start-time-view:>
+      <created-at-view:>
+        <%= I18n.l(this, format: :timestamps_for_collection) %>
+      </created-at-view:>
+      <created-at-heading:>
+        <t key='activerecord.attributes.request.created_at'/>
+      </created-at-heading:>
+      <place-heading:>
+        <t key='activerecord.attributes.request.place'/>
+      </place-heading:>
+      <duration-heading:>
+        <t key='activerecord.attributes.request.duration'/>
+      </duration-heading:>
+      <observations-heading:>
+        <t key='activerecord.attributes.request.observations'/>
+      </observations-heading:>
+    </table-plus>
+  </collection:>
+</index-for-user-page:>

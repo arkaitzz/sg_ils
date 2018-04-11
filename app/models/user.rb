@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   attr_accessible :name, :email_address, :password, :password_confirmation, :current_password, :addresses
 
   # --- Relations --- #
-  has_many :addresses, :class_name => "Address"
+  has_many :addresses, :class_name => 'Address'
   has_many :requests
   has_many :interpretation_request, :class_name => "Request"
 
