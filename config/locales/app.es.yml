@@ -14,11 +14,14 @@ es:
   zhik:
     brand:
       footer:
+        sentence0: Zeinu Hizkuntza Interpreteen Kudeaketa
         sentence1: '&copy; %{year} - Todos los derechos reservados'
         sentence2: 'Teléfonos: +34 XX XX XX / +34 XX XX XX'
         sentence3: "Correo electrónico: <a href='mailto:zhik@euskal-gorrak.org'>zhik@euskal-gorrak.org</a>"
         sentence4: "Web: <a href='https://euskal-gorrak.org'>Euskalgorrak</a>"
         sentence5: "Funciona con <a id='ubuntu-footer' target='_blank' href='http://www.ubuntu.com/' title='Sitio web de Ubuntu.com'>Ubuntu GNU/Linux</a>"
+        sentence6: Patrocina
+        sentence7: Gestiona
   nav_item:
     home: Inicio
     home_title: Volver a Inicio

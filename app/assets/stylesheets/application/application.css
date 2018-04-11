@@ -16,3 +16,4 @@ a.review-link{color:black}
 /* Footer */
 div.footer div.authors ul{list-style:none;margin-left:0}
 a#ubuntu-footer{background: transparent url('/img/ubuntu-logo.png') no-repeat scroll left center;padding-left:1.5em}
+.boss{text-align:center}

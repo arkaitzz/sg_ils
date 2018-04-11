@@ -77,17 +77,26 @@
     </append-head:>
 
     <footer:>
-      <div class='container zhik-data'>
-        <%= image_tag('logo_footer.png', alt: 'ZHIK logo') %><br/>
-        <strong><t key='zhik.brand.footer.sentence1' year='&Time.now.year'/></strong><br/>
-        <t key='zhik.brand.footer.sentence2'/><br/>
-        <t key='zhik.brand.footer.sentence3'/><br/>
-        <t key='zhik.brand.footer.sentence4'/>
-      </div>
-      <div class='container authors'>
-        <ul>
-          <li><t key='zhik.brand.footer.sentence5'/></li>
-        </ul>
+      <div class='container'>
+        <div class='zhik-data authors span4'>
+          <strong><t key='zhik.brand.footer.sentence0' year='&Time.now.year'/></strong><br/>
+          <%= image_tag('logo_footer.png', alt: 'ZHIK logo') %><br/>
+          <strong><t key='zhik.brand.footer.sentence1' year='&Time.now.year'/></strong><br/>
+          <t key='zhik.brand.footer.sentence2'/><br/>
+          <t key='zhik.brand.footer.sentence3'/><br/>
+          <t key='zhik.brand.footer.sentence4'/>
+          <ul>
+            <li><t key='zhik.brand.footer.sentence5'/></li>
+          </ul>
+        </div>
+        <div class='boss span3'>
+          <strong><t key='zhik.brand.footer.sentence6' year='&Time.now.year'/></strong><br/>
+          <%= image_tag('logo_kutxa_fundazioa_footer.png', alt: 'Kutxa Fundazioa') %><br/>
+        </div>
+        <div class='boss span3'>
+          <strong><t key='zhik.brand.footer.sentence7' year='&Time.now.year'/></strong><br/>
+          <%= image_tag('logo_euskalgorrak_footer.png', alt: 'Euskalgorrak') %><br/>
+        </div>
       </div>
     </footer:>
     
