@@ -2,7 +2,7 @@ class RequestsController < ApplicationController
 
   hobo_model_controller
 
-  auto_actions :all
+  auto_actions :index, :create, :update, :destroy
   auto_actions_for :user, [:index]
 
   def pre_steps_creation

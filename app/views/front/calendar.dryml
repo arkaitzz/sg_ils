@@ -1,0 +1,43 @@
+<page title='&I18n.t "calendar.main.title"'>
+
+  <body: class='front-page'/>
+  <content:>
+    <div class='header content-header well'>
+      <h2 class='heading'>
+        <t key='calendar.main.header'/>
+      </h2>
+    </div>
+
+    <section class='content-body'>
+      <div class='row'>
+        <div class='span8'>
+          <%= month_calendar attribute: :start_time, events: @requests do |date, requests| %>
+          <a href='/calendar_day/#{date}'><%= date.day %></a>
+          <% temp = requests.count %>
+          <if test='&temp > 0'>
+          <br/><br/><span class='badge requests-count'>
+            <if test='&temp > 1'>
+            <t key='calendar.request.counter-n' count='&temp'/>
+            </if>
+            <else>
+            <t key='calendar.request.counter-one'/>
+            </else>
+          </span>
+          </if>
+          <% end %>
+        </div>
+        <div class='span4'>
+          <requests-data/>
+        </div>
+      </div>
+    </section>
+  </content:>
+
+</page>
+
+<def tag='requests-data' attrs='datevalue'>
+  <h4 class='like-legend'><t key='calendar.main.requests_data_header'/></h4>
+  <div>
+    Very important data goes here! :)
+  </div>
+</def>

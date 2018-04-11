@@ -124,7 +124,7 @@
 
 <def tag="index-for-user-page" polymorphic/>
 <def tag="index-for-user-page" for="Address">
-  <page merge title="#{ht 'address.index_for_owner.title', :count=>100, :default=>['Address for']} #{name :with => @user, :no_wrapper => true}">
+  <page merge title="#{ht 'address.index_for_owner.title', :count=>100, :default=>['Addresses for']} #{name :with => @user, :no_wrapper => true}">
     <body: class="index-for-owner-page user address" param/>
     <content-header: param>
       <div param="back-to">
@@ -211,9 +211,6 @@
     </content-header:>
 
     <content-body: param>
-      <a action="new" to="&model" param="new-link">
-        <ht key="request.actions.new">New Request</ht>
-      </a>
 
       <page-nav param="top-page-nav"/>
 
@@ -221,6 +218,13 @@
 
       <page-nav param="bottom-page-nav"/>
 
+
+      <div param="new-form">
+        <h3 param="new-form-heading">
+          <ht key="request.form.new.heading">New Request</ht>
+        </h3>
+        <form with="&@invalid_record || new_for_current_user(Request)" param/>
+      </div>
 
     </content-body:>
   </page>
@@ -261,12 +265,6 @@
       </h2>
 
       <record-flags fields="confirmed" param/>
-
-      <a action="edit" if="&can_edit?" param="edit-link">
-        <ht key="request.actions.edit" name="#{name(:no_wrapper => true)}">
-          Edit Request
-        </ht>
-      </a>
     </content-header:>
 
     <content-body: param>
@@ -300,7 +298,7 @@
 
 <def tag="index-for-user-page" polymorphic/>
 <def tag="index-for-user-page" for="Request">
-  <page merge title="#{ht 'request.index_for_owner.title', :count=>100, :default=>['Request for']} #{name :with => @user, :no_wrapper => true}">
+  <page merge title="#{ht 'request.index_for_owner.title', :count=>100, :default=>['Requests for']} #{name :with => @user, :no_wrapper => true}">
     <body: class="index-for-owner-page user request" param/>
     <content-header: param>
       <div param="back-to">

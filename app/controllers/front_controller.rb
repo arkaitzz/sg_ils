@@ -20,4 +20,16 @@ class FrontController < ApplicationController
     end
   end
 
+  def calendar
+    temp = params[:start_date].blank? ? DateTime.now : params[:start_date].to_datetime
+    @requests = Request.where('start_time >= ? AND start_time <= ?', temp.beginning_of_month, temp.end_of_month)
+  end
+
+  def calendar_day
+    # FIXME: need to deal with lack of a valid params[:day] value
+    temp = params[:day].to_date
+    @requests = Request.where(:start_time => temp)
+    @day = temp
+  end
+
 end

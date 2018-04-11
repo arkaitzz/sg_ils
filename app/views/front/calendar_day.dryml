@@ -1,0 +1,50 @@
+<%
+  day = I18n.l(@day, format: :calendar_day).downcase
+%>
+
+<page title='&I18n.t("calendar.day.title", day: "#{day}")'>
+
+  <append-scripts:>
+    <show-js/>
+    <calendar-day-js/>
+  </append-scripts:>
+
+  <body: class='front-page'/>
+  <content:>
+    <div class='header content-header well'>
+      <h2 class='heading'>
+        <t key='calendar.day.heading' day='#{day}'/>
+      </h2>
+    </div>
+
+    <section class='content-body'>
+      <div class='row'>
+        <div class='span8 calendar_day'>
+          <div class='calendar-heading'>
+            <%
+              minus = @day - 1.day
+              plus = @day + 1.day
+            %>
+            <a href="/calendar_day/#{minus.strftime('%Y-%m-%d')}"><t key='calendar.day.link_to_day' day="#{minus.strftime('%d')}"/></a> - 
+            <a href='/calendar'><t key='calendar.day.link_to_month'/></a> - 
+            <a href="/calendar_day/#{plus.strftime('%Y-%m-%d')}"><t key='calendar.day.link_to_day' day="#{plus.strftime('%d')}"/></a>
+          </div>
+          <if test='&@appointments.empty?'>
+          <span class='text-14'><t key='calendar.no_appointments'/></span>
+          </if>
+          <else>
+          <appointments-table recordset='&@appointments' timelapse='_today' class='calendar_day'/>
+          </else>
+        </div>
+
+        <div class='span4'>
+          <new-appointment datevalue='&@day.to_date'/>
+          <edit-appointment datevalue='&@day.to_date'/>
+        </div>
+
+      </div>
+    </section>
+    <datepicker-lang-changer/>
+  </content:>
+
+</page>

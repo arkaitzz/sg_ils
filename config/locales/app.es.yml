@@ -63,6 +63,19 @@ es:
        zhik_review: '%A %d de %B a las %H:%M'
        timestamps_for_collection: '%d/%m/%Y'
 
+  simple_calendar:
+    previous: anterior
+    next: siguiente
+
+  calendar:
+    request:
+      counter-one: 1 solicitud
+      counter-n: '%{count} solicitudes'
+    main:
+      title: Calendario general
+      header: Calendario general
+      requests_data_header: Solicitudes
+
   address:
     applicant: 'Solicitante: %{name}'
     index_for_user:
