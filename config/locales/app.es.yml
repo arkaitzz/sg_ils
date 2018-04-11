@@ -57,6 +57,9 @@ es:
       - :day
       - :month
       - :year
+    formats:
+      calendar_day: '%A, %d de %B'
+
   time:
      formats:
        zhik: '%d/%m/%Y %H:%M'
