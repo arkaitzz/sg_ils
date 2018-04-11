@@ -27,7 +27,7 @@
         <br/>
         <%= f.text_area :observations, class: 'form-control span8', placeholder: 'Añade las observaciones que necesites' %>
         <div class='form-actions'>
-          <%= f.submit I18n.t('request.step3.next_step'), :class => 'btn btn-success' %> <or-go-back href="/step2/#{@request.id}"/>
+          <%= f.submit I18n.t('request.step3.next_step'), :class => 'btn btn-success' %> <or-go-back href="#{request_step2_path(@request.id)}"/>
         </div>
       <% end %>
     </section>

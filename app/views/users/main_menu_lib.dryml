@@ -1,7 +1,7 @@
 <def tag='administrator-menu'>
   <div class='row'>
     <div class='span2'>
-      <a href="/users/#{@user.id}">
+      <a href="#{user_path(@user.id)}">
         <button class='w3-btn w3-light-blue'><t key='user.main_menu.actions_applicant.edit_profile'/></button>
       </a>
     </div>
@@ -11,7 +11,7 @@
 <def tag='interpreter-menu'>
   <div class='row'>
     <div class='span2'>
-      <a href="/users/#{@user.id}">
+      <a href="#{user_path(@user.id)}">
         <button class='w3-btn w3-light-blue'><t key='user.main_menu.actions_applicant.edit_profile'/></button>
       </a>
     </div>
@@ -26,17 +26,17 @@
       </a>
     </div>
     <div class='span3'>
-      <a href="/users/#{@user.id}/requests">
+      <a href="#{user_requests_path(@user.id)}">
         <button class='w3-btn w3-blue'><t key='user.main_menu.actions_applicant.my_requests'/></button>
       </a>
     </div>
     <div class='span3'>
-      <a href="/users/#{@user.id}/addresses">
+      <a href="#{user_addresses_path(@user.id)}">
         <button class='w3-btn w3-deep-purple'><t key='user.main_menu.actions_applicant.my_addresses'/></button>
       </a>
     </div>
     <div class='span2'>
-      <a href="/users/#{@user.id}">
+      <a href="#{user_path(@user.id)}">
         <button class='w3-btn w3-light-blue'><t key='user.main_menu.actions_applicant.edit_profile'/></button>
       </a>
     </div>
