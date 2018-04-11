@@ -211,9 +211,6 @@
     </content-header:>
 
     <content-body: param>
-      <a action="new" to="&model" param="new-link">
-        <ht key="request.actions.new">New Request</ht>
-      </a>
 
       <page-nav param="top-page-nav"/>
 
@@ -221,6 +218,13 @@
 
       <page-nav param="bottom-page-nav"/>
 
+
+      <div param="new-form">
+        <h3 param="new-form-heading">
+          <ht key="request.form.new.heading">New Request</ht>
+        </h3>
+        <form with="&@invalid_record || new_for_current_user(Request)" param/>
+      </div>
 
     </content-body:>
   </page>
@@ -261,12 +265,6 @@
       </h2>
 
       <record-flags fields="confirmed" param/>
-
-      <a action="edit" if="&can_edit?" param="edit-link">
-        <ht key="request.actions.edit" name="#{name(:no_wrapper => true)}">
-          Edit Request
-        </ht>
-      </a>
     </content-header:>
 
     <content-body: param>
@@ -319,10 +317,6 @@
     </content-header:>
 
     <content-body: param>
-      <a action="new" to="&@user.requests" param="new-link">
-        <ht key="request.actions.new" >New Request</ht>
-      </a>
-
 
       <page-nav param="top-page-nav"/>
 
@@ -334,33 +328,6 @@
 </def>
 
 
-<def tag="new-for-user-page" polymorphic/>
-<def tag="new-for-user-page" for="Request">
-  <page merge title="#{ht 'request.new_for_owner.title', :default=>['New Request for']} #{name :with => @user}">
-    <body: class="new-for-owner-page  request" param/>
-
-    <content-header: param>
-      <h2 param="heading">
-        <ht key="request.new_for_owner.heading">
-          New Request
-        </ht>
-      </h2>
-      <h3 param="subheading">
-        <ht key="request.new_for_owner.subheading">
-          For:
-        </ht>
-        <a with="&@user"/>
-      </h3>
-    </content-header:>
-
-    <content-body: param>
-      <form owner="user" method="post" param>
-        <field-list: skip="user"/>
-        <submit: label="#{ht 'request.actions.create', :default=>['Create Request']}"/>
-      </form>
-    </content-body:>
-  </page>
-</def>
 
 
 

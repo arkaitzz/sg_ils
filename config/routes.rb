@@ -17,4 +17,8 @@ ZHIK::Application.routes.draw do
   match 'step3/:request_id' => 'requests#step3', :as => 'request_step3', via: [:get, :post]
   post 'request_review/:request_id' => 'requests#review', :as => 'request_review'
   post 'confirm_review/:request_id' => 'requests#confirm', :as => 'request_confirm'
+
+  # Calendar
+  get 'calendar/' => 'front#calendar', :as => 'main_calendar'
+  get 'calendar_day/:day' => 'front#calendar_day', :as => 'day_calendar'
 end

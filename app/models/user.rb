@@ -112,7 +112,7 @@ class User < ActiveRecord::Base
   end
 
   def destroy_permitted?
-    acting_user.administrator?
+    false
   end
 
   def view_permitted?(field)
