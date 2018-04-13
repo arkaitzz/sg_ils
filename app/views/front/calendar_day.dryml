@@ -6,7 +6,7 @@
 
   <body: class='front-page'/>
   <content:>
-    <div class='header content-header well'>
+    <div class='header content-header'>
       <h3 class='heading'>
         <t key='calendar.day.heading' day='#{day}'/>
       </h3>
