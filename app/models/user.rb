@@ -116,6 +116,8 @@ class User < ActiveRecord::Base
   end
 
   def view_permitted?(field)
-    acting_user == self || acting_user.administrator?
+    acting_user == self || 
+      acting_user.administrator? || 
+      (acting_user.guest? && [:name, :email_address, :password, :password_confirmation].include?(field))
   end
 end
