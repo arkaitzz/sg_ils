@@ -16,7 +16,7 @@ es:
       footer:
         sentence0: Zeinu Hizkuntza Interpreteen Kudeaketa
         sentence1: '&copy; %{year} - Todos los derechos reservados'
-        sentence2: 'Teléfonos: +34 XX XX XX / +34 XX XX XX'
+        sentence2: 'Teléfonos: +34 944 765 052'
         sentence3: "Correo electrónico: <a href='mailto:zhik@euskal-gorrak.org'>zhik@euskal-gorrak.org</a>"
         sentence4: "Web: <a href='https://euskal-gorrak.org'>Euskalgorrak</a>"
         sentence5: "Funciona con <a id='ubuntu-footer' target='_blank' href='http://www.ubuntu.com/' title='Sitio web de Ubuntu.com'>Ubuntu GNU/Linux</a>"
@@ -71,6 +71,7 @@ es:
     next: siguiente
 
   calendar:
+    no_requests: No hay solicitudes
     request:
       counter-one: 1 solicitud
       counter-n: '%{count} solicitudes'
@@ -78,6 +79,11 @@ es:
       title: Calendario general
       header: Calendario general
       requests_data_header: Solicitudes
+    day:
+      title: Agenda %{day}
+      heading: Agenda del %{day}
+      link_to_day: Agenda del %{day}
+      link_to_month: Agenda mensual
 
   address:
     applicant: 'Solicitante: %{name}'
