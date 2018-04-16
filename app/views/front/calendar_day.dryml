@@ -1,8 +1,14 @@
+<include src='lib_calendar'/>
+
 <%
   day = I18n.l(@day, format: :calendar_day).downcase
 %>
 
 <page title='&I18n.t("calendar.day.title", day: "#{day}")'>
+
+  <append-scripts:>
+    <calendar-day-js/>
+  </append-scripts:>
 
   <body: class='front-page'/>
   <content:>
@@ -28,12 +34,12 @@
           <span class='text-14'><t key='calendar.no_requests'/></span>
           </if>
           <else>
-          <requests-table recordset='&@requests' timelapse='_today' class='calendar_day'/>
+          <requests-table recordset='&@requests' class='calendar_day'/>
           </else>
         </div>
 
         <div class='span4'>
-          Very important data goes here! :)
+          <aside-data/>
         </div>
 
       </div>
@@ -41,4 +47,3 @@
   </content:>
 
 </page>
-

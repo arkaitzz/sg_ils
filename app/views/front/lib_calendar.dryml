@@ -1,0 +1,83 @@
+<def tag='calendar-day-js'>
+  <script type='text/javascript'>
+    jQuery( document ).ready(function() {
+      // Set values for edit form
+      function get_request_data(action, request){
+        switch(action){
+          case 'fillin':
+            request = jQuery(request);
+            var id = request.attr('data-rapid-context').split(':')[1];
+            var request = jQuery.ajax({
+              url: '/requests/' + id + '.json',
+              dataType: 'json'
+            });
+            request.done(function(data) {
+              jQuery('.start_time').html(data.start_time);
+              jQuery('.place').html(data.place);
+              jQuery('.duration').html(data.duration);
+              jQuery('.observations').html(data.observations);
+            });
+            break;
+          case 'empty':
+            jQuery('.value').val('');
+            break;
+        }
+      }
+      jQuery('tr.request').click(function(){
+        if( jQuery(this).hasClass('selected') ){
+          jQuery(this).removeClass('selected');
+          jQuery('#request-data').hide();
+          jQuery('#message').show();
+          get_request_data('empty');
+        }else{
+          jQuery('tr.request').removeClass('selected');
+          jQuery(this).addClass('selected');
+          get_request_data('fillin', this);
+          jQuery('#message').hide();
+          jQuery('#request-data').show();
+        }
+      });
+    });
+  </script>
+</def>
+
+<def tag='requests-table' attrs='recordset'>
+  <table class='table text-14' with='&recordset' fields='start_time, place, user'>
+    <start-time-view:>
+      <%= I18n.l this, format: :zhik_calendar_day %>
+    </start-time-view:>
+    <start-time-heading:>
+      <t key='calendar.day.table.header.start_time'/>
+    </start-time-heading:>
+  </table>
+</def>
+
+<def tag='aside-data'>
+  <div id='message'>
+    <if test='&@requests.empty?'>
+    <span class='text-14'><t key='calendar.no_requests'/></span>
+    </if>
+    <else>
+    <span class='text-14'><t key='calendar.day.no_selection'/></span>
+    </else>
+  </div>
+  <div id='request-data' style='display:none'>
+    <h5 class='like-legend'><t key='calendar.day.aside.header'/></h5>
+    <dl>
+      <dt><t key='activerecord.attributes.request.start_time'/></dt>
+      <dd class='start_time value'></dd>
+    </dl>
+    <dl>
+      <dt><t key='activerecord.attributes.request.place'/></dt>
+      <dd class='place value'></dd>
+    </dl>
+    <dl>
+      <dt><t key='activerecord.attributes.request.duration'/></dt>
+      <dd class='duration value'></dd>
+    </dl>
+    <dl>
+      <dt><t key='activerecord.attributes.request.observations'/></dt>
+      <dd class='observations value'></dd>
+    </dl>
+  </div>
+</def>

@@ -28,7 +28,11 @@ class FrontController < ApplicationController
   def calendar_day
     # FIXME: need to deal with lack of a valid params[:day] value
     temp = params[:day].to_date
-    @requests = Request.where(:start_time => temp)
+    @requests = Request.where(
+      'start_time > ? AND start_time < ?', 
+      temp.to_datetime.beginning_of_day, 
+      temp.to_datetime.end_of_day
+    ).confirmed.order('start_time asc')
     @day = temp
   end
 
