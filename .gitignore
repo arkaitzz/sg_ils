@@ -34,3 +34,4 @@ config/environments/*.rb
 config/hobo_routes.rb
 config/initializers/static_configuration.rb
 config/puma.rb
+public/.well-known/
