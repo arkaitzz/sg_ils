@@ -64,6 +64,7 @@ es:
      formats:
        zhik: '%d/%m/%Y %H:%M'
        zhik_review: '%A %d de %B a las %H:%M'
+       zhik_calendar_day: '%H:%M'
        timestamps_for_collection: '%d/%m/%Y'
 
   simple_calendar:
@@ -84,6 +85,9 @@ es:
       heading: Agenda del %{day}
       link_to_day: Agenda del %{day}
       link_to_month: Agenda mensual
+      table:
+        header:
+          start_time: Hora
 
   address:
     applicant: 'Solicitante: %{name}'
@@ -197,6 +201,7 @@ es:
         duration: Duración estimada
         observations: Observaciones
         created_at: Creada el
+        user: Solicitante
     attribute_help:
       request:
         place: ¿Donde va a ser?
