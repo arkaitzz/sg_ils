@@ -109,11 +109,9 @@
 </def>
 
 <def tag='main-nav'>
-  <hobo-cache suffix='nav'>
-    <navigation class='main-nav' merge-attrs param='default'>
-      <nav-item href='/' title='&I18n.t("nav_item.home_title")'><t key='nav_item.home' count='100'></t></nav-item>
-    </navigation>
-  </hobo-cache>
+  <navigation class='main-nav' merge-attrs param='default'>
+    <nav-item href='/' title='&I18n.t("nav_item.home_title")'><t key='nav_item.home' count='100'></t></nav-item>
+  </navigation>
 </def>
 
 <def tag='setfocus' attrs='element'>
