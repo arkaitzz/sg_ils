@@ -1,8 +1,14 @@
+<include src='lib_calendar'/>
+
 <%
   day = I18n.l(@day, format: :calendar_day).downcase
 %>
 
 <page title='&I18n.t("calendar.day.title", day: "#{day}")'>
+
+  <append-scripts:>
+    <calendar-day-js/>
+  </append-scripts:>
 
   <body: class='front-page'/>
   <content:>
@@ -33,7 +39,7 @@
         </div>
 
         <div class='span4'>
-          Very important data goes here! :)
+          <aside-data/>
         </div>
 
       </div>
@@ -41,14 +47,3 @@
   </content:>
 
 </page>
-
-<def tag='requests-table' attrs='recordset'>
-  <table class='table text-14' with='&recordset' fields='start_time, place, user'>
-    <start-time-view:>
-      <%= I18n.l this, format: :zhik_calendar_day %>
-    </start-time-view:>
-    <start-time-heading:>
-      <t key='calendar.day.table.header.start_time'/>
-    </start-time-heading:>
-  </table>
-</def>

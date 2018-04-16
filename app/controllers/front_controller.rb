@@ -32,7 +32,7 @@ class FrontController < ApplicationController
       'start_time > ? AND start_time < ?', 
       temp.to_datetime.beginning_of_day, 
       temp.to_datetime.end_of_day
-    ).order('start_time asc')
+    ).confirmed.order('start_time asc')
     @day = temp
   end
 

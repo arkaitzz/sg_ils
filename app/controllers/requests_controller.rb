@@ -2,7 +2,7 @@ class RequestsController < ApplicationController
 
   hobo_model_controller
 
-  auto_actions :index, :create, :update, :destroy
+  auto_actions :index, :create, :update, :destroy, :show
   auto_actions_for :user, [:index]
 
   def pre_steps_creation
@@ -31,7 +31,7 @@ class RequestsController < ApplicationController
 
   def step3
     @duration = []
-    (1..8).each{|v| @duration << [v.to_s + 'h.',v]}
+    (1..8).each{|v| @duration << [v.to_s + I18n.t('activerecord.attributes.request.start_time_append'),v]}
     set_request
     # NOTE: In this step we set: DURATION / OBSERVATIONS / SPECIAL NEEDS
     @request.update_attributes(params[:request])
@@ -61,6 +61,23 @@ class RequestsController < ApplicationController
 
   def unassigned
     @request = Request.all.where(:interpreter_id => nil).paginate(:page => params[:page], :per_page => 2)
+  end
+
+  def show
+    hobo_show :with => @request do
+      respond_to do |format|
+        format.html
+        format.json{
+          temp = {
+            'start_time' => I18n.l(@request.start_time, format: :zhik),
+            'duration' => @request.duration.to_s + I18n.t('activerecord.attributes.request.start_time_append'),
+            'place' => @request.place,
+            'observations' => @request.observations
+          }
+          render status: 200, json: temp.to_json
+        }
+      end
+    end
   end
 
   protected
