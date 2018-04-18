@@ -25,6 +25,16 @@
 
 <def tag='interpreter-menu'>
   <div class='row'>
+    <div class='span3'>
+      <a href='&main_calendar_path'>
+        <button class='w3-btn w3-yellow'><t key='user.main_menu.actions_interpreter.my_calendar'/></button>
+      </a>
+    </div>
+    <div class='span2'>
+      <a href="&unassigned_requests_path">
+        <button class='w3-btn w3-deep-purple'><t key='user.main_menu.actions_interpreter.request_search'/></button>
+      </a>
+    </div>
     <div class='span2'>
       <a href="#{user_path(@user.id)}">
         <button class='w3-btn w3-light-blue'><t key='user.main_menu.actions_applicant.edit_profile'/></button>

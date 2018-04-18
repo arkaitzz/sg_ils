@@ -151,6 +151,7 @@ es:
       actions_interpreter:
         title: 'Intérprete'
         my_calendar: Mi calendario
+        request_search: Buscar peticiones
         requests: Gestionar peticiones
       actions_administrator:
         title: Administrador
