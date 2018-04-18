@@ -26,7 +26,7 @@ class FrontController < ApplicationController
       when 'administrator'
         @requests = Request.where('start_time >= ? AND start_time <= ?', temp.beginning_of_month, temp.end_of_month)
       when 'interpreter'
-        @requests = Request.where('start_time >= ? AND start_time <= ?', temp.beginning_of_month, temp.end_of_month)
+        @requests = current_user.interpretation_request.where('start_time >= ? AND start_time <= ?', temp.beginning_of_month, temp.end_of_month)
       else
         redirect_to root_path
     end
