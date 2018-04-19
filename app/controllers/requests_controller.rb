@@ -60,7 +60,7 @@ class RequestsController < ApplicationController
   end
 
   def unassigned
-    @request = Request.all.where(:interpreter_id => nil).paginate(:page => params[:page], :per_page => 2)
+    @request = Request.all.where(:interpreter_id => nil).paginate(:page => params[:page], :per_page => 10)
   end
 
   def show
