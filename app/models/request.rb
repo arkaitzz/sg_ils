@@ -12,6 +12,8 @@ class Request < ActiveRecord::Base
   end
   attr_accessible :start_time, :place, :duration, :observations, :user
 
+  default_scope { where(confirmed: true) }
+
   # --- Relations --- #
   belongs_to :user # The creator of the request (applicant).
   belongs_to :interpreter, :class_name => 'User' # The interpreter that is going to assist this request.

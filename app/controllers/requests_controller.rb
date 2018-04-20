@@ -33,7 +33,7 @@ class RequestsController < ApplicationController
     @duration = []
     (1..8).each{|v| @duration << [v.to_s + I18n.t('activerecord.attributes.request.start_time_append'),v]}
     set_request
-    # NOTE: In this step we set: DURATION / OBSERVATIONS / SPECIAL NEEDS
+    # NOTE: In this step we set: DURATION and OBSERVATIONS / SPECIAL NEEDS
     @request.update_attributes(params[:request])
   end
 
@@ -55,12 +55,22 @@ class RequestsController < ApplicationController
     # TODO: show past requests, not yet accepted ones and accepted ones
     user = User.find(params[:user_id])
     params[:sort] = 'start_time' if params[:sort].blank?
-    @requests = Request.apply_scopes(:user_is => user, :confirmed => true).order_by( parse_sort_param(:start_time) ).paginate(:page => params[:page], :per_page => 2)
+    @requests = Request.apply_scopes(
+      :user_is => user
+    ).order_by(
+      parse_sort_param(:start_time)
+    ).paginate(
+      :page => params[:page], :per_page => 10
+    )
     hobo_index_for :user
   end
 
   def unassigned
-    @request = Request.all.where(:interpreter_id => nil).paginate(:page => params[:page], :per_page => 10)
+    @request = Request.where(
+      :interpreter_id => nil
+    ).paginate(
+      :page => params[:page], :per_page => 10
+    )
   end
 
   def show
