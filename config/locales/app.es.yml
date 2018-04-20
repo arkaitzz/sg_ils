@@ -79,7 +79,10 @@ es:
     main:
       title: Calendario general
       header: Calendario general
-      requests_data_header: Solicitudes
+      requests_data_header: Información general
+      stats:
+        total: Solicitudes totales
+        this_month: Solicitudes mes actual
     day:
       title: Agenda %{day}
       heading: Agenda del %{day}

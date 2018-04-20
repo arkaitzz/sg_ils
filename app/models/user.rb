@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   # --- Relations --- #
   has_many :addresses, :class_name => 'Address'
   has_many :requests
-  has_many :interpretation_request, :class_name => "Request"
+  has_many :interpretation_requests, :class_name => "Request"
 
   # --- Callbacks --- #
   # This gives admin rights and an :active state to the first sign-up.

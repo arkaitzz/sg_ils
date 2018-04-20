@@ -21,12 +21,14 @@ class FrontController < ApplicationController
   end
 
   def calendar
-    temp = params[:start_date].blank? ? DateTime.now : params[:start_date].to_datetime
+    temp = params[:start_date].to_datetime rescue DateTime.now
     case (current_user.profile rescue 'guest')
       when 'administrator'
-        @requests = Request.where('start_time >= ? AND start_time <= ?', temp.beginning_of_month, temp.end_of_month)
+        @requests = get_requests_in_a('month', false, temp)
+        @stats = get_requests_stats(temp)
       when 'interpreter'
-        @requests = current_user.interpretation_request.where('start_time >= ? AND start_time <= ?', temp.beginning_of_month, temp.end_of_month)
+        @requests = get_requests_in_a('month', false, temp)
+        @stats = get_requests_stats(temp)
       else
         redirect_to root_path
     end
@@ -37,20 +39,33 @@ class FrontController < ApplicationController
     @day = temp
     case (current_user.profile rescue 'guest')
       when 'administrator'
-        @requests = Request.where(
-          'start_time > ? AND start_time < ?', 
-          temp.to_datetime.beginning_of_day, 
-          temp.to_datetime.end_of_day
-        ).confirmed.order('start_time asc')
+        @requests = get_requests_in_a('day', false, temp)
       when 'interpreter'
-        @requests = current_user.interpretation_request.where(
+        @requests = current_user.interpretation_requests.where(
           'start_time > ? AND start_time < ?', 
           temp.to_datetime.beginning_of_day, 
           temp.to_datetime.end_of_day
-        ).confirmed.order('start_time asc')
+        ).order('start_time asc')
       else
         redirect_to root_path
     end
+  end
+
+  private
+
+  def get_requests_stats(date)
+    temp = []
+    temp << ['total', Request.count].join(CTRL_CHAR)
+    temp << ['this_month', get_requests_in_a('month', true, date)].join(CTRL_CHAR)
+  end
+
+  def get_requests_in_a(period = 'month', count = false, date = DateTime.now)
+      temp = Request.where(
+        'start_time > ? AND start_time < ?', 
+        eval("date.to_datetime.beginning_of_#{period}"), 
+        eval("date.to_datetime.end_of_#{period}")
+      ).order('start_time asc')
+      count.blank? ? temp : temp.count
   end
 
 end
