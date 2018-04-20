@@ -24,10 +24,10 @@ class FrontController < ApplicationController
     temp = params[:start_date].to_datetime rescue DateTime.now
     case (current_user.profile rescue 'guest')
       when 'administrator'
-        @requests = get_requests_in_a('month', false, temp)
+        @requests = get_requests_in_a('Request', temp)
         @stats = get_requests_stats(temp)
       when 'interpreter'
-        @requests = get_requests_in_a('month', false, temp)
+        @requests = get_requests_in_a('Request', temp)
         @stats = get_requests_stats(temp)
       else
         redirect_to root_path
@@ -39,13 +39,9 @@ class FrontController < ApplicationController
     @day = temp
     case (current_user.profile rescue 'guest')
       when 'administrator'
-        @requests = get_requests_in_a('day', false, temp)
+        @requests = get_requests_in_a('Request', temp, 'day', false)
       when 'interpreter'
-        @requests = current_user.interpretation_requests.where(
-          'start_time > ? AND start_time < ?', 
-          temp.to_datetime.beginning_of_day, 
-          temp.to_datetime.end_of_day
-        ).order('start_time asc')
+        @requests = get_requests_in_a('current_user.interpretation_requests', temp, 'day', false)
       else
         redirect_to root_path
     end
@@ -56,16 +52,16 @@ class FrontController < ApplicationController
   def get_requests_stats(date)
     temp = []
     temp << ['total', Request.count].join(CTRL_CHAR)
-    temp << ['this_month', get_requests_in_a('month', true, date)].join(CTRL_CHAR)
+    temp << ['this_month', get_requests_in_a('Request', date, 'month', true)].join(CTRL_CHAR)
   end
 
-  def get_requests_in_a(period = 'month', count = false, date = DateTime.now)
-      temp = Request.where(
-        'start_time > ? AND start_time < ?', 
-        eval("date.to_datetime.beginning_of_#{period}"), 
-        eval("date.to_datetime.end_of_#{period}")
-      ).order('start_time asc')
-      count.blank? ? temp : temp.count
+  def get_requests_in_a(object, date, period = 'month', count = false)
+    temp = eval(object).where(
+      'start_time > ? AND start_time < ?', 
+      eval("date.to_datetime.beginning_of_#{period}"), 
+      eval("date.to_datetime.end_of_#{period}")
+    ).order('start_time asc')
+    count.blank? ? temp : temp.count
   end
 
 end
