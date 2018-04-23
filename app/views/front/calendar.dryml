@@ -38,6 +38,12 @@
 <def tag='requests-data' attrs='datevalue'>
   <h4 class='like-legend'><t key='calendar.main.requests_data_header'/></h4>
   <div>
-    Very important data goes here! :)
+    <dl>
+      <repeat with='&@stats'>
+      <% temp = this.split(CTRL_CHAR) %>
+      <dt><t key="calendar.main.stats.#{temp[0]}"/></dt>
+      <dd><%= temp[1] %></dd>
+      </repeat>
+    </dl>
   </div>
 </def>
