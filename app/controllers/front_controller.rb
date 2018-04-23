@@ -27,7 +27,7 @@ class FrontController < ApplicationController
         @requests = get_requests_in_a('Request', temp)
         @stats = get_requests_stats(temp)
       when 'interpreter'
-        @requests = get_requests_in_a('Request', temp)
+        @requests = get_requests_in_a('current_user.interpretation_requests', temp)
         @stats = get_requests_stats(temp)
       else
         redirect_to root_path

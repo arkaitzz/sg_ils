@@ -209,6 +209,7 @@ es:
         observations: Observaciones
         created_at: Creada el
         user: Solicitante
+        user_name: Solicitante
     attribute_help:
       request:
         place: ¿Donde va a ser?

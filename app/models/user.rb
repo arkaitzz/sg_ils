@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   # --- Relations --- #
   has_many :addresses, :class_name => 'Address'
   has_many :requests
-  has_many :interpretation_requests, :class_name => "Request"
+  has_many :interpretation_requests, :class_name => 'Request', :foreign_key => 'interpreter_id'
 
   # --- Callbacks --- #
   # This gives admin rights and an :active state to the first sign-up.
@@ -118,6 +118,7 @@ class User < ActiveRecord::Base
   def view_permitted?(field)
     acting_user == self || 
       acting_user.administrator? || 
-      (acting_user.guest? && [:name, :email_address, :password, :password_confirmation].include?(field))
+      ( acting_user.guest? && [:name, :email_address, :password, :password_confirmation].include?(field) ) ||
+      ( acting_user.interpreter? && [:name].include?(field) )
   end
 end
