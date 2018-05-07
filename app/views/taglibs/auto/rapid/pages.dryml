@@ -268,7 +268,7 @@
     </content-header:>
 
     <content-body: param>
-      <field-list fields="start_time, place, duration, observations, interpreter, user" param/>
+      <field-list fields="start_time, end_time, place, duration, observations, interpreter, user" param/>
     </content-body:>
 
   </page>
