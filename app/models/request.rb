@@ -4,6 +4,7 @@ class Request < ActiveRecord::Base
 
   fields do
     start_time    :datetime
+    end_time      :datetime
     place         :string
     duration      :integer
     observations  :text
@@ -21,6 +22,10 @@ class Request < ActiveRecord::Base
   # --- Aux. methods --- #
   def confirm_after_review
     self.update_attribute(:confirmed, true)
+  end
+
+  def set_end_time
+    self.update_attribute(:end_time, start_time + duration.hour)
   end
 
   # --- Permissions --- #

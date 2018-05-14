@@ -16,7 +16,7 @@
 <def tag="form" for="Request">
   <form merge param="default">
     <error-messages param/>
-    <field-list fields="start_time, place, duration, observations, confirmed, interpreter, user" param/>
+    <field-list fields="start_time, end_time, place, duration, observations, confirmed, interpreter, user" param/>
     <div param="actions">
       <submit label="#{ht 'request.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
     </div>
