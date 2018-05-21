@@ -48,6 +48,7 @@ class RequestsController < ApplicationController
     # TODO: Here (state changes from pending -> confirmed)
     # TODO: Once its confirmed, do we notify by email to interpreters and the applicant?
     @request.confirm_after_review
+    @request.set_end_time
     redirect_to '/', flash: { :notice => I18n.t('request.confirm.success', id: @request.user.id).html_safe }
   end
 
